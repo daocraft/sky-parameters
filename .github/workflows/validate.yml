@@ -1,0 +1,26 @@
+name: Validate Denna Spec Files
+
+on:
+  pull_request:
+    paths:
+      - 'data/**/*.denna-spec.json'
+      - 'schemas/**/*.schema.json'
+  push:
+    branches: [main]
+    paths:
+      - 'data/**/*.denna-spec.json'
+      - 'schemas/**/*.schema.json'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate denna-spec files
+        uses: denna-spec/denna-spec@v1
+        with:
+          patterns: 'data/**/*.denna-spec.json'
+          exclude: 'data/_template/**'

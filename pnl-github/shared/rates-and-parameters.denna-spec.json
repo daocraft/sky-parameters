@@ -1,0 +1,85 @@
+{
+  "$schema": "https://schemas.denna.io/v1/sky/shared-params.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.shared.rates",
+    "name": "Shared Rates and Parameters",
+    "version": "1.0.0",
+    "description": "Shared rate parameters, fallback values, borrow rate subsidy program, and time constants used across all primes.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:17-22",
+        "src/lib/debt-pnl/calculations/debt-fees.ts:14-16,154,166,193",
+        "src/lib/settlement/revenue/utils.ts:4",
+        "src/lib/debt-pnl/calculations/borrow-rate-subsidy.ts:32-34",
+        "src/lib/pnl-utils/services/ssr-calculator.ts:17"
+      ]
+    }
+  },
+  "parameters": {
+    "rates": {
+      "ssrSpread": { "value": 30, "unit": "bps" },
+      "ssrSpreadDescription": "sUSDS spread representing the difference between Base Rate and SSR. Per Atlas A.3.1.2.2.1: SSR = Base Rate - 30bps. Applied as credit to primes holding sUSDS on L2.",
+      "fallbackRates": [
+        {
+          "name": "Fallback SSR",
+          "rate": { "value": 4.5, "unit": "percent" },
+          "description": "Used when no SSR event data is available for a period. Converted via apyToPerSecondRate(0.045).",
+          "source": "src/lib/debt-pnl/calculations/debt-fees.ts:154,166,193"
+        },
+        {
+          "name": "BASE_RATE_PERCENT",
+          "rate": { "value": 4.66, "unit": "percent" },
+          "description": "Fallback base rate (SSR + 30bps approximation). Used when all SSR data sources fail.",
+          "source": "src/lib/settlement/revenue/utils.ts:4"
+        }
+      ],
+      "rateHierarchy": [
+        {
+          "name": "Sky Savings Rate (SSR)",
+          "formula": "Base Rate - 0.30%",
+          "reference": "Atlas A.3.1.2.2.1",
+          "notes": "Code currently uses Base Rate for idle stablecoin reimbursements instead of Agent Rate (Base Rate - 10bps). Known divergence from methodology."
+        },
+        {
+          "name": "Agent Rate",
+          "formula": "Base Rate - 0.10%",
+          "reference": "Atlas A.3.1.2.3.1"
+        },
+        {
+          "name": "Agent Credit Line Borrow Rate",
+          "formula": "= Base Rate (default)",
+          "reference": "Atlas A.3.1.2.5.1"
+        },
+        {
+          "name": "Distribution Reward Fee",
+          "value": { "value": 20, "unit": "bps" },
+          "reference": "Atlas A.2.9.2.2.2.3.1",
+          "notes": "20bps of the 30bps spread"
+        },
+        {
+          "name": "Sky Spread",
+          "value": { "value": 10, "unit": "bps" },
+          "reference": "Atlas A.2.9.2.2.2.3.3",
+          "notes": "10bps of the 30bps spread"
+        }
+      ]
+    },
+    "borrowRateSubsidy": {
+      "start": "2026-01-01",
+      "duration": { "value": 24, "unit": "months" },
+      "cap": { "value": 1000000000, "currency": "USD" },
+      "capPeriod": "per prime per day",
+      "eligiblePrimes": ["spark", "grove"],
+      "formula": "Subsidized Rate = T-Bill Rate + ((Base Rate - T-Bill Rate) * T / 24), where T = month counter (1 for Jan 2026, 24 for Dec 2027)",
+      "tBillSource": {
+        "api": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={year}",
+        "field": "BC_3MONTH",
+        "lookbackDays": 10
+      }
+    },
+    "timeConstants": {
+      "secondsPerYear": 31536000,
+      "secondsPerDay": 86400
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-params.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.prime.maple",
+    "name": "Obex — Maple Asset Configuration",
+    "version": "1.0.0",
+    "description": "Obex Maple syrupUSDC position configuration: pricing method and known issues with the reimbursement formula.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:219-227",
+        "src/lib/debt-pnl/calculations/obex-maple-exposure.ts:112"
+      ]
+    }
+  },
+  "parameters": {
+    "calculationModules": [],
+    "pricingConfig": {
+      "sources": [
+        {
+          "asset": "syrupUSDC",
+          "source": "On-chain",
+          "method": "NAV pricing via ERC4626 convertToAssets()"
+        }
+      ]
+    },
+    "knownIssues": [
+      {
+        "id": "BUG-1",
+        "description": "The Obex reimbursement calculation uses an inverted formula (revenue - maxDebtFees) instead of MAX(0, Base Rate Cost - Actual Revenue) as specified by Laniakea. Additionally, it uses maxDebtFeesUsd as base cost instead of principal × rate.",
+        "source": "src/lib/debt-pnl/calculations/obex-maple-exposure.ts:112",
+        "status": "Confirmed. Fix pending."
+      }
+    ]
+  }
+}

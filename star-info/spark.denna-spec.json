@@ -1,0 +1,149 @@
+{
+  "$schema": "https://schemas.denna.io/v1/defi/prime-config.schema.json",
+  "metadata": {
+    "kind": "io.sky.prime.config",
+    "name": "Spark",
+    "version": "1.0.0",
+    "description": "Spark star configuration: chains, wallet addresses, PSM3 contracts, sUSDS oracle addresses, and full allocation positions across Ethereum, Base, Arbitrum, and Avalanche.",
+    "source": {
+      "references": ["TOKENS.ts", "src/lib/debt-pnl/constants.ts"]
+    }
+  },
+  "parameters": {
+    "chains": [
+      {
+        "id": "ethereum",
+        "name": "Ethereum",
+        "almProxy": { "value": "0x1601843c5e9bc251a3272907010afa41fa18347e", "format": "evm" },
+        "vaultProxy": { "value": "0x691a6c29e9e96dd897718305427ad5d534db16ba", "format": "evm" },
+        "features": { "alm": true, "psm3": false, "lending": true, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+      },
+      {
+        "id": "base",
+        "name": "Base",
+        "almProxy": { "value": "0x2917956eff0b5eaf030abdb4ef4296df775009ca", "format": "evm" },
+        "features": { "alm": true, "psm3": true, "lending": true, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+      },
+      {
+        "id": "arbitrum",
+        "name": "Arbitrum",
+        "almProxy": { "value": "0x92afd6f2385a90e44da3a8b60fe36f6cbe1d8709", "format": "evm" },
+        "features": { "alm": true, "psm3": true, "lending": true, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+      },
+      {
+        "id": "optimism",
+        "name": "Optimism",
+        "almProxy": { "value": "0x876664f0c9ff24d1aa355ce9f1680ae1a5bf36fb", "format": "evm" },
+        "features": { "alm": true, "psm3": true, "lending": false, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+      },
+      {
+        "id": "unichain",
+        "name": "Unichain",
+        "almProxy": { "value": "0x345e368fccd62266b3f5f37c9a131fd1c39f5869", "format": "evm" },
+        "features": { "alm": true, "psm3": true, "lending": false, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+      },
+      {
+        "id": "avalanche",
+        "name": "Avalanche",
+        "almProxy": { "value": "0xece6b0e8a54c2f44e066fbb9234e7157b15b7fec", "format": "evm" },
+        "features": { "alm": true, "psm3": false, "lending": true, "idleStablecoins": false, "susds": false, "inPnlChains": false },
+        "notes": "Present in TOKENS.ts but not in STAR_CHAINS for debt PnL."
+      }
+    ],
+    "psm3": [
+      { "chain": "base",     "address": { "value": "0x1601843c5e9bc251a3272907010afa41fa18347e", "format": "evm" } },
+      { "chain": "arbitrum", "address": { "value": "0x2b05f8e1cacc6974fd79a673a341fe1f58d27266", "format": "evm" } },
+      { "chain": "optimism", "address": { "value": "0xe0f9978b907853f354d79188a3defbd41978af62", "format": "evm" } },
+      { "chain": "unichain", "address": { "value": "0x7b42ed932f26509465f7ce3faf76ffce1275312f", "format": "evm" } }
+    ],
+    "oracleAddresses": [
+      { "chain": "base",     "address": { "value": "0xeC0C14Ea7fF20F104496d960FDEBF5a0a0cC14D0", "format": "evm" }, "notes": "sUSDS price oracle" },
+      { "chain": "arbitrum", "address": { "value": "0x73750DbD85753074e452B2C27fB9e3B0E75Ff3B8", "format": "evm" }, "notes": "sUSDS price oracle" },
+      { "chain": "optimism", "address": { "value": "0x15ACEE5F73b36762Ab1a6b7C98787b8148447898", "format": "evm" }, "notes": "sUSDS price oracle" },
+      { "chain": "unichain", "address": { "value": "0x93c81ADc7F98FdBC8C7a15eCBeD312c8F6adbcB3", "format": "evm" }, "notes": "sUSDS price oracle" }
+    ],
+    "debtSource": {
+      "chain": "ethereum",
+      "vatAddress": { "value": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b", "format": "evm" }
+    },
+    "allocations": {
+      "ethereum": [
+        { "contract": { "value": "0x4dedf26112b3ec8ec46e7e31ea5e123490b05b8b", "format": "evm" }, "protocol": "SparkLend", "type": "atoken",     "underlying": "DAI",   "notes": "spDAI" },
+        { "contract": { "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359", "format": "evm" }, "protocol": "SparkLend", "type": "atoken",     "underlying": "USDS",  "notes": "spUSDS. SSR address." },
+        { "contract": { "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815", "format": "evm" }, "protocol": "SparkLend", "type": "atoken",     "underlying": "USDC",  "notes": "spUSDC. Direct rate." },
+        { "contract": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "protocol": "SparkLend", "type": "atoken",     "underlying": "USDT",  "notes": "spUSDT. Bill always. Direct rate. SSR funded." },
+        { "contract": { "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d", "format": "evm" }, "protocol": "SparkLend", "type": "atoken",     "underlying": "PYUSD", "notes": "spPYUSD. Bill always. Direct rate." },
+        {
+          "contract": { "value": "0x73e65dbd630f90604062f6e02fab9138e713edd9", "format": "evm" },
+          "protocol": "Morpho", "type": "erc4626", "underlying": "DAI",
+          "markets": [
+            "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
+            "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8",
+            "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
+          ],
+          "notes": "22 markets total — see TOKENS.ts lines 356-377 for full list."
+        },
+        {
+          "contract": { "value": "0xe41a0583334f0dc4e023acd0bfef3667f6fe0597", "format": "evm" },
+          "protocol": "Morpho", "type": "erc4626", "underlying": "USDS",
+          "markets": [
+            "0x02e723fdfc0c26779c2c06bbf783e2f4d6aebd03cedc1806981b742f1a644105",
+            "0x8cdb63a27a48ac27fadc0f158a732104bcc4e10bb61c9a5095ea7c127204e26c",
+            "0x366bc0aa9aa70a1f075096e825e9b1c7221878a90edd52081d2af5cfca3beb89",
+            "0xa79d8028dec527565028fd9fc075b02b498f2b69a1d519dff543ba99b812ff6b"
+          ]
+        },
+        {
+          "contract": { "value": "0x56a76b428244a50513ec81e225a293d128fd581d", "format": "evm" },
+          "protocol": "Morpho", "type": "erc4626", "underlying": "USDC",
+          "markets": [
+            "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
+            "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8",
+            "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
+          ]
+        },
+        { "contract": { "value": "0x09aa30b182488f769a9824f15e6ce58591da4781", "format": "evm" }, "protocol": "Aave",       "type": "atoken",     "underlying": "USDS" },
+        { "contract": { "value": "0x32a6268f9ba3642dda7892add74f1d34469a4259", "format": "evm" }, "protocol": "Aave",       "type": "atoken",     "underlying": "USDS", "notes": "Second Aave USDS position." },
+        { "contract": { "value": "0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c", "format": "evm" }, "protocol": "Aave",       "type": "atoken",     "underlying": "USDC" },
+        { "contract": { "value": "0x2bbe31d63e6813e3ac858c04dae43fb2a72b0d11", "format": "evm" }, "protocol": "Fluid",      "type": "erc4626",    "underlying": "sUSDS" },
+        { "contract": { "value": "0x00836fe54625be242bcfa286207795405ca4fd10", "format": "evm" }, "protocol": "Curve",      "type": "curve",      "underlying": "USDT",  "notes": "sUSDS/USDT LP. Active from 2025-11-01." },
+        { "contract": { "value": "0xa632d59b9b804a956bfaa9b48af3a1b74808fc1f", "format": "evm" }, "protocol": "Curve",      "type": "curve",      "underlying": "PYUSD", "notes": "PYUSD/USDS LP." },
+        { "contract": { "value": "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b", "format": "evm" }, "protocol": "Maple",      "type": "erc4626",    "underlying": "USDC",  "notes": "syrupUSDC." },
+        { "contract": { "value": "0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041", "format": "evm" }, "protocol": "Blackrock",  "type": "buidl",      "underlying": "USDC",  "notes": "BUIDL. Sky takes all." },
+        { "contract": { "value": "0x43415eb6ff9db7e26a15b704e7a3edce97d31c4e", "format": "evm" }, "protocol": "Superstate", "type": "superstate", "underlying": "USDC",  "notes": "USTB." },
+        { "contract": { "value": "0x14d60e7fdc0d71d8611742720e4c50e7a974020c", "format": "evm" }, "protocol": "Superstate", "type": "superstate", "underlying": "USDC" },
+        {
+          "contract": { "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86", "format": "evm" },
+          "protocol": "Centrifuge", "type": "centrifuge", "underlying": "USDC",
+          "vaultAddress": { "value": "0xFE6920eB6C421f1179cA8c8d4170530CDBdfd77A", "format": "evm" },
+          "notes": "JHST."
+        },
+        { "contract": { "value": "0x38464507e02c983f20428a6e8566693fe9e422a9", "format": "evm" }, "protocol": "Arkis",      "type": "erc4626",    "underlying": "USDC" },
+        { "contract": { "value": "0x49506c3aa028693458d6ee816b2ec28522946872", "format": "evm" }, "protocol": "Anchorage",  "type": "anchorage" },
+        { "contract": { "value": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3", "format": "evm" }, "protocol": "Ethena",     "type": "ethena",     "notes": "USDe. Sky takes all." },
+        { "contract": { "value": "0x9d39a5de30e57443bff2a8307a4256c8797a3497", "format": "evm" }, "protocol": "Ethena",     "type": "erc4626",    "underlying": "USDe",  "notes": "sUSDe with cooldown." },
+        { "contract": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" }, "protocol": "PayPal",     "type": "erc20",      "notes": "PYUSD in-wallet. Prepayment: $2M." }
+      ],
+      "base": [
+        { "contract": { "value": "0x4e65fe4dba92790696d040ac24aa414708f5c0ab", "format": "evm" }, "protocol": "Aave",   "type": "atoken",  "underlying": "USDC" },
+        {
+          "contract": { "value": "0x7bfa7c4f149e7415b73bdedfe609237e29cbf34a", "format": "evm" },
+          "protocol": "Morpho", "type": "erc4626", "underlying": "USDC",
+          "markets": [
+            "0x9103c3b4e834476c9a62ea009ba2c884ee42e94e6e314a26f04d312434191836",
+            "0x38c846197ac32a752a60c25d4536ebb0c3920c532e9a859c38c91efb7b8c2abb"
+          ]
+        },
+        { "contract": { "value": "0xf62e339f21d8018940f188f6987bcdf02a849619", "format": "evm" }, "protocol": "Fluid",  "type": "erc4626", "underlying": "sUSDS" }
+      ],
+      "arbitrum": [
+        { "contract": { "value": "0x724dc807b04555b71ed48a6896b6f41593b8c637", "format": "evm" }, "protocol": "Aave",  "type": "atoken",  "underlying": "USDC" },
+        { "contract": { "value": "0x3459fcc94390c3372c0f7b4cd3f8795f0e5afe96", "format": "evm" }, "protocol": "Fluid", "type": "erc4626", "underlying": "sUSDS" }
+      ],
+      "avalanche": [
+        { "contract": { "value": "0x28b3a8fb53b741a8fd78c0fb9a6b2393d896a43d", "format": "evm" }, "protocol": "Spark", "type": "erc4626", "underlying": "USDC" },
+        { "contract": { "value": "0x625e7708f30ca75bfd92586e17077590c60eb4cd", "format": "evm" }, "protocol": "Aave",  "type": "atoken",  "underlying": "USDC" }
+      ]
+    }
+  }
+}

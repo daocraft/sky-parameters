@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-params.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.prime.params",
+    "name": "Spark — Business Parameters",
+    "version": "1.0.0",
+    "description": "Spark PnL calculation modules, borrow rate subsidy eligibility, Curve pool handling, one-time revenue adjustments, and Ethereum sUSDS treatment notes.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:19-22",
+        "src/lib/pnl-utils/constants/addresses.ts:66-80",
+        "TOKENS.ts:344"
+      ]
+    }
+  },
+  "parameters": {
+    "calculationModules": [
+      { "id": "maxDebtFees",          "name": "Step 1: Max Debt Fees",       "enabled": true,  "notes": "TWA Debt × Base Rate" },
+      { "id": "idleStablecoins",      "name": "Step 2: Idle Stablecoins",    "enabled": true,  "notes": "USDS, DAI, USDC on all chains" },
+      { "id": "susdsProfitL2",        "name": "Step 3: sUSDS Profit",        "enabled": true,  "notes": "30bps spread credit on L2 only; Ethereum is implicit" },
+      { "id": "psm3Idle",             "name": "PSM3 Idle",                   "enabled": true,  "notes": "USDS in PSM3 on L2 chains" },
+      { "id": "psm3Susds",            "name": "PSM3 sUSDS",                  "enabled": true,  "notes": "sUSDS in PSM3 on L2 chains" },
+      { "id": "skyDirectExposure",    "name": "Step 4: Sky Direct Exposure", "enabled": true,  "notes": "USDC in PSM3" },
+      { "id": "borrowRateSubsidy",    "name": "Borrow Rate Subsidy",         "enabled": true,  "notes": "Eligible per BORROW_RATE_SUBSIDY_ELIGIBLE_STARS" },
+      { "id": "curvePoolHandling",    "name": "Curve Pool Handling",         "enabled": true,  "notes": "sUSDS/USDT and PYUSD/USDS pools" }
+    ],
+    "borrowRateSubsidy": {
+      "eligible": true,
+      "cap": { "value": 1000000000, "currency": "USD" },
+      "capPeriod": "per day",
+      "start": "2026-01-01",
+      "duration": { "value": 24, "unit": "months" }
+    },
+    "curvePoolHandling": [
+      {
+        "name": "sUSDS/USDT Pool",
+        "lpAddress": { "value": "0x00836fe54625be242bcfa286207795405ca4fd10", "format": "evm" },
+        "activeFrom": "2025-11-01",
+        "treatment": "USDT portion: base rate treatment. sUSDS portion: 30bps spread credit."
+      },
+      {
+        "name": "PYUSD/USDS Pool",
+        "lpAddress": { "value": "0xa632d59b9b804a956bfaa9b48af3a1b74808fc1f", "format": "evm" },
+        "treatment": "Full Agent Credit Line Borrow Rate. No idle reimbursement on PYUSD portion."
+      }
+    ],
+    "oneTimeAdjustments": [
+      {
+        "month": "2025-12",
+        "address": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" },
+        "amount": { "value": 5815000, "currency": "USD" },
+        "description": "PayPal PYUSD bulk payments ($1.815M Dec 2 + $4M Dec 29)"
+      }
+    ],
+    "prepayments": [
+      {
+        "asset": "PYUSD",
+        "address": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" },
+        "amount": { "value": 2000000, "currency": "USD" }
+      }
+    ],
+    "ethereumSusdsNotes": "On Ethereum, sUSDS (0xa3931d71877c0e7a3148cb7eb4463524fec27fbd) is excluded from the explicit 30bps spread. The debt module charges SSR + 30bps (Base Rate); the implicit difference is the 30bps spread. Adding an explicit credit would double-count, resulting in net charge of 0."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-params.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.prime.psm3",
+    "name": "Spark — PSM3 Configuration",
+    "version": "1.0.0",
+    "description": "Spark PSM3 token composition rules and USDC Sky Direct Exposure positions within PSM3 contracts on L2 chains.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:32-61",
+        "TOKENS.ts:972-988"
+      ]
+    }
+  },
+  "parameters": {
+    "calculationModules": [],
+    "psm3TokenComposition": {
+      "tokens": [
+        {
+          "token": "USDC",
+          "module": "PSM3 Sky Direct Exposure (Step 4)",
+          "treatment": "MAX(0, baseCost - actualYield) reimbursement. Compares Base Rate cost against actual USDC custodian yield."
+        },
+        {
+          "token": "USDS",
+          "module": "PSM3 Idle (Step 2 variant)",
+          "treatment": "Idle reimbursement at Agent Rate (currently Base Rate in code — known divergence from methodology)."
+        },
+        {
+          "token": "sUSDS",
+          "module": "PSM3 sUSDS (Step 3 variant)",
+          "treatment": "30bps spread credit."
+        }
+      ]
+    },
+    "psm3SkyDirectExposure": [
+      {
+        "chain": "base",
+        "usdcAddress": { "value": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", "format": "evm" },
+        "notes": "USDC in PSM3 on Base. Requires source: 'psm3' filter to distinguish from ALM-held USDC."
+      },
+      {
+        "chain": "arbitrum",
+        "usdcAddress": { "value": "0xaf88d065e77c8cc2239327c5edb3a432268e5831", "format": "evm" },
+        "notes": "USDC in PSM3 on Arbitrum. Requires source: 'psm3' filter."
+      },
+      {
+        "chain": "optimism",
+        "usdcAddress": { "value": "0x0b2c639c533813f4aa9d7837caf62653d097ff85", "format": "evm" },
+        "notes": "USDC in PSM3 on Optimism. Requires source: 'psm3' filter."
+      },
+      {
+        "chain": "unichain",
+        "usdcAddress": { "value": "0x078d782b760474a361dda0af3839290b0ef57ad6", "format": "evm" },
+        "notes": "USDC in PSM3 on Unichain. Requires source: 'psm3' filter."
+      }
+    ]
+  }
+}

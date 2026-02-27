@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schemas.denna.io/v1/defi/prime-config.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.prime.chains",
+    "name": "Obex — Chain Configuration",
+    "version": "1.0.0",
+    "description": "Obex chain configuration: single Ethereum chain with ALM proxy and vault addresses. Simplest star — one chain, one allocation.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:14",
+        "TOKENS.ts:1009-1015",
+        "TOKENS.ts wallet_address fields"
+      ]
+    }
+  },
+  "parameters": {
+    "chains": [
+      {
+        "id": "ethereum",
+        "name": "Ethereum",
+        "almProxy": { "value": "0xb6dd7ae22c9922afee0642f9ac13e58633f715a2", "format": "evm" },
+        "vaultProxy": { "value": "0xf275110dfe7b80df66a762f968f59b70babe2b29", "format": "evm" },
+        "features": {
+          "inPnlChains": true
+        },
+        "notes": "Only chain. STAR_CHAINS.obex = ['ethereum']."
+      }
+    ],
+    "debtSource": {
+      "chain": "ethereum",
+      "vatAddress": { "value": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b", "format": "evm" }
+    },
+    "allocations": {
+      "ethereum": [
+        {
+          "contract": { "value": "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b", "format": "evm" },
+          "protocol": "Maple",
+          "type": "erc4626",
+          "underlying": "USDC",
+          "underlyingAddress": { "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "format": "evm" },
+          "notes": "syrupUSDC. Primary allocation. NAV priced via ERC4626 convertToAssets()."
+        },
+        {
+          "contract": { "value": "0x6b175474e89094c44da98b954eedeac495271d0f", "format": "evm" },
+          "protocol": "Sky",
+          "type": "erc20",
+          "underlying": "DAI",
+          "notes": "DAI. Asset (POL)."
+        },
+        {
+          "contract": { "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "format": "evm" },
+          "protocol": "Circle",
+          "type": "erc20",
+          "underlying": "USDC",
+          "notes": "USDC. Asset."
+        }
+      ]
+    }
+  }
+}

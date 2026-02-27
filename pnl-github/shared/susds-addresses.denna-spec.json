@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.denna.io/v1/sky/shared-params.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.shared.addresses",
+    "name": "sUSDS Contract Addresses",
+    "version": "1.0.0",
+    "description": "sUSDS token addresses and PSM3-specific token addresses per chain. Used by the sUSDS profit module (Step 3) and PSM3 idle/sUSDS modules.",
+    "source": {
+      "references": ["src/lib/debt-pnl/constants.ts:86-106"]
+    }
+  },
+  "parameters": {
+    "tokens": [
+      {
+        "symbol": "sUSDS",
+        "description": "Sky USD Savings token. ERC4626 vault on Ethereum, plain ERC20 on L2 chains.",
+        "addresses": [
+          {
+            "chain": "ethereum",
+            "address": { "value": "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd", "format": "evm" },
+            "notes": "ERC4626 vault earning SSR via token appreciation. Excluded from explicit 30bps spread calculation — implicit via debt/SSR interaction. Adding explicit credit would double-count."
+          },
+          {
+            "chain": "base",
+            "address": { "value": "0x5875eee11cf8398102fdad704c9e96607675467a", "format": "evm" },
+            "notes": "Plain ERC20 on L2. Needs explicit 30bps credit."
+          },
+          {
+            "chain": "arbitrum",
+            "address": { "value": "0xddb46999f8891663a8f2828d25298f70416d7610", "format": "evm" },
+            "notes": "Plain ERC20 on L2. Needs explicit 30bps credit."
+          },
+          {
+            "chain": "optimism",
+            "address": { "value": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0", "format": "evm" },
+            "notes": "Plain ERC20 on L2. Needs explicit 30bps credit."
+          },
+          {
+            "chain": "unichain",
+            "address": { "value": "0xa06b10db9f390990364a3984c04fadf1c13691b5", "format": "evm" },
+            "notes": "Plain ERC20 on L2. Needs explicit 30bps credit."
+          }
+        ]
+      }
+    ],
+    "psm3Addresses": {
+      "usds": [
+        { "chain": "base",     "address": { "value": "0x820c137fa70c8691f0e44dc420a5e53c168921dc", "format": "evm" } },
+        { "chain": "arbitrum", "address": { "value": "0x6491c05a82219b8d1479057361ff1654749b876b", "format": "evm" } },
+        { "chain": "optimism", "address": { "value": "0x4f13a96ec5c4cf34e442b46bbd98a0791f20edc3", "format": "evm" } },
+        { "chain": "unichain", "address": { "value": "0x7e10036acc4b56d4dfca3b77810356ce52313f9c", "format": "evm" } }
+      ],
+      "susds": [
+        { "chain": "base",     "address": { "value": "0x5875eee11cf8398102fdad704c9e96607675467a", "format": "evm" } },
+        { "chain": "arbitrum", "address": { "value": "0xddb46999f8891663a8f2828d25298f70416d7610", "format": "evm" } },
+        { "chain": "optimism", "address": { "value": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0", "format": "evm" } },
+        { "chain": "unichain", "address": { "value": "0xa06b10db9f390990364a3984c04fadf1c13691b5", "format": "evm" } }
+      ]
+    }
+  }
+}

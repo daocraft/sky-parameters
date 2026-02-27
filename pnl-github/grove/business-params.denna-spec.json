@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-params.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.prime.params",
+    "name": "Grove — Business Parameters",
+    "version": "1.0.0",
+    "description": "Grove PnL calculation modules, borrow rate subsidy eligibility, RWA asset cap, and known issues.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:179-209",
+        "src/lib/debt-pnl/calculations/grove-rwa-exposure.ts:127"
+      ]
+    }
+  },
+  "parameters": {
+    "calculationModules": [
+      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true,  "notes": "TWA Debt × Base Rate" },
+      { "id": "idleStablecoins",   "name": "Step 2: Idle Stablecoins",    "enabled": false, "notes": "Grove has no separate idle stablecoin module" },
+      { "id": "susdsProfitL2",     "name": "Step 3: sUSDS Profit",        "enabled": false, "notes": "No sUSDS positions for Grove" },
+      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": true,  "notes": "USDS in PSM3 on L2 chains — uses shared PSM3 addresses" },
+      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": true,  "notes": "sUSDS in PSM3 on L2 chains — uses shared PSM3 addresses" },
+      { "id": "skyDirectExposure", "name": "Step 4: Sky Direct Exposure", "enabled": true,  "notes": "RWA assets (JHLCO, JHST, BUIDL, USTB)" },
+      { "id": "borrowRateSubsidy", "name": "Borrow Rate Subsidy",         "enabled": true,  "notes": "Eligible per BORROW_RATE_SUBSIDY_ELIGIBLE_STARS" }
+    ],
+    "borrowRateSubsidy": {
+      "eligible": true,
+      "cap": { "value": 1000000000, "currency": "USD" },
+      "capPeriod": "per day",
+      "start": "2026-01-01",
+      "duration": { "value": 24, "unit": "months" }
+    },
+    "assetCaps": [
+      {
+        "asset": "JHLCO",
+        "cap": { "value": 325000000, "currency": "USD" },
+        "effect": "When balance exceeds cap, Sky Direct Exposure reimbursement is calculated pro-rata. Excess reverts to standard allocation treatment."
+      }
+    ],
+    "knownIssues": [
+      {
+        "id": "BUG-1",
+        "description": "The RWA reimbursement calculation does not apply MAX(0, Base Rate Cost - Actual Revenue) as specified by Laniakea. When RWA assets outperform the base rate, the reimbursement goes negative (star charged extra rather than clamped to zero).",
+        "source": "src/lib/debt-pnl/calculations/grove-rwa-exposure.ts:127",
+        "status": "Confirmed. Fix pending."
+      }
+    ]
+  }
+}

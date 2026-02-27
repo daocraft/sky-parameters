@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.denna.io/v1/sky/shared-params.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.shared.addresses",
+    "name": "Shared Stablecoin Token Addresses",
+    "version": "1.0.0",
+    "description": "Token contract addresses for idle stablecoins (USDS, DAI, USDC) tracked across all primes. Used by the idle stablecoin reimbursement module to classify assets in ALM proxy balances.",
+    "source": {
+      "references": ["src/lib/debt-pnl/constants.ts:63-84"]
+    }
+  },
+  "parameters": {
+    "tokens": [
+      {
+        "symbol": "USDS",
+        "description": "USD Sky stablecoin",
+        "addresses": [
+          { "chain": "ethereum", "address": { "value": "0xdc035d45d973e3ec169d2276ddab16f1e407384f", "format": "evm" } },
+          { "chain": "base",     "address": { "value": "0x820c137fa70c8691f0e44dc420a5e53c168921dc", "format": "evm" } },
+          { "chain": "arbitrum", "address": { "value": "0x6491c05a82219b8d1479057361ff1654749b876b", "format": "evm" } },
+          { "chain": "optimism", "address": { "value": "0x4f13a96ec5c4cf34e442b46bbd98a0791f20edc3", "format": "evm" } },
+          { "chain": "unichain", "address": { "value": "0x7e10036acc4b56d4dfca3b77810356ce52313f9c", "format": "evm" } }
+        ]
+      },
+      {
+        "symbol": "DAI",
+        "description": "Dai stablecoin",
+        "addresses": [
+          { "chain": "ethereum", "address": { "value": "0x6b175474e89094c44da98b954eedeac495271d0f", "format": "evm" } }
+        ]
+      },
+      {
+        "symbol": "USDC",
+        "description": "USD Coin",
+        "addresses": [
+          { "chain": "ethereum", "address": { "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "format": "evm" } },
+          { "chain": "base",     "address": { "value": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", "format": "evm" } },
+          { "chain": "arbitrum", "address": { "value": "0xaf88d065e77c8cc2239327c5edb3a432268e5831", "format": "evm" } },
+          { "chain": "optimism", "address": { "value": "0x0b2c639c533813f4aa9d7837caf62653d097ff85", "format": "evm" } },
+          { "chain": "unichain", "address": { "value": "0x078d782b760474a361dda0af3839290b0ef57ad6", "format": "evm" } }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://schemas.denna.io/v1/defi/prime-config.schema.json",
+  "metadata": {
+    "kind": "io.sky.pnl.prime.chains",
+    "name": "Grove — Chain Configuration",
+    "version": "1.0.0",
+    "description": "Grove chain configuration: active chains, ALM proxy addresses, vault proxy, and debt source. PSM3 uses shared infrastructure — no Grove-specific PSM3 contracts.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:13",
+        "TOKENS.ts:990-1008",
+        "TOKENS.ts wallet_address fields",
+        "src/lib/debt-pnl/debt-pnl.service.ts:118"
+      ]
+    }
+  },
+  "parameters": {
+    "chains": [
+      {
+        "id": "ethereum",
+        "name": "Ethereum",
+        "almProxy": { "value": "0x491edfb0b8b608044e227225c715981a30f3a44e", "format": "evm" },
+        "vaultProxy": { "value": "0x26512a41c8406800f21094a7a7a0f980f6e25d43", "format": "evm" },
+        "features": {
+          "alm": true,
+          "rwa": true,
+          "lending": false,
+          "idleStablecoins": false,
+          "susds": false,
+          "inPnlChains": true
+        },
+        "notes": "Primary chain. Debt sourced from Vat. Holds RWA, Aave, Ripple, Securitize, Agora, Curve, Uniswap, Steakhouse positions."
+      },
+      {
+        "id": "base",
+        "name": "Base",
+        "almProxy": { "value": "0x9b746dbc5269e1df6e4193bcb441c0fbbf1cecee", "format": "evm" },
+        "features": {
+          "alm": true,
+          "psm3": true,
+          "inPnlChains": false
+        },
+        "notes": "PSM3 used for debt PnL on L2. Not in STAR_CHAINS for debt PnL — PSM3 processing added separately by debt-pnl.service.ts:118."
+      },
+      {
+        "id": "avalanche",
+        "name": "Avalanche",
+        "almProxy": { "value": "0x7107dd8f56642327945294a18a4280c78e153644", "format": "evm" },
+        "features": {
+          "alm": true,
+          "inPnlChains": false
+        },
+        "notes": "Centrifuge, Arch (Galaxy CLO) positions. Not in STAR_CHAINS for debt PnL."
+      },
+      {
+        "id": "plume",
+        "name": "Plume",
+        "almProxy": { "value": "0x1db91ad50446a671e2231f77e00948e68876f812", "format": "evm" },
+        "features": {
+          "alm": true,
+          "inPnlChains": false
+        },
+        "notes": "Centrifuge positions. Not in STAR_CHAINS for debt PnL."
+      },
+      {
+        "id": "monad",
+        "name": "Monad",
+        "almProxy": { "value": "0x94b398acb2fce988871218221ea6a4a2b26cccbc", "format": "evm" },
+        "features": {
+          "alm": true,
+          "inPnlChains": false
+        },
+        "notes": "Agora, Morpho, Uniswap positions. Not in STAR_CHAINS for debt PnL."
+      }
+    ],
+    "debtSource": {
+      "chain": "ethereum",
+      "vatAddress": { "value": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b", "format": "evm" },
+      "notes": "Same Vat contract as Spark and Obex. PSM3 processing on L2 chains added by debt-pnl.service.ts for ['base','arbitrum','optimism','unichain']."
+    },
+    "allocations": {}
+  }
+}

@@ -17,14 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Diagnose schema reachability
-        run: |
-          echo "=== DNS resolution ==="
-          nslookup schemas.denna.io
-          echo "=== curl verbose ==="
-          curl -v --max-time 15 https://schemas.denna.io/v1/defi/prime-config.schema.json 2>&1 | head -60
-          echo "=== exit code: $? ==="
-
       - name: Validate denna-spec files
         uses: daocraft/denna-spec-validator-action@v1
         with:

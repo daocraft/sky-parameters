@@ -3,13 +3,11 @@ name: Validate Denna Spec Files
 on:
   pull_request:
     paths:
-      - 'data/**/*.denna-spec.json'
-      - 'schemas/**/*.schema.json'
+      - '**/*.denna-spec.json'
   push:
     branches: [main]
     paths:
-      - 'data/**/*.denna-spec.json'
-      - 'schemas/**/*.schema.json'
+      - '**/*.denna-spec.json'
   workflow_dispatch:
 
 jobs:
@@ -20,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Validate denna-spec files
-        uses: denna-spec/denna-spec@v1
+        uses: daocraft/denna-spec-validator-action@v1
         with:
-          patterns: 'data/**/*.denna-spec.json'
-          exclude: 'data/_template/**'
+          patterns: '**/*.denna-spec.json'
+          exclude: '**/_template/**'

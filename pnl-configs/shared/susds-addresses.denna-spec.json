@@ -1,6 +1,7 @@
 {
   "$schema": "https://schemas.denna.io/v1/sky/shared-params.schema.json",
   "metadata": {
+    "id": "susds-addresses",
     "kind": "io.sky.pnl.shared.addresses",
     "name": "sUSDS Contract Addresses",
     "version": "1.0.0",

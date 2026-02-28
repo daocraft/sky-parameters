@@ -1,6 +1,7 @@
 {
   "$schema": "https://schemas.denna.io/v1/sky/shared-params.schema.json",
   "metadata": {
+    "id": "stablecoin-addresses",
     "kind": "io.sky.pnl.shared.addresses",
     "name": "Shared Stablecoin Token Addresses",
     "version": "1.0.0",

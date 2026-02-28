@@ -1,6 +1,7 @@
 {
   "$schema": "https://schemas.denna.io/v1/sky/shared-params.schema.json",
   "metadata": {
+    "id": "rates-and-parameters",
     "kind": "io.sky.pnl.shared.rates",
     "name": "Shared Rates and Parameters",
     "version": "1.0.0",

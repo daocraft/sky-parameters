@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-params.schema.json",
+  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-config.schema.json",
   "metadata": {
     "kind": "io.sky.pnl.prime.maple",
     "name": "Obex — Maple Asset Configuration",

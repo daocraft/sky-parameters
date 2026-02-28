@@ -1,6 +1,7 @@
 {
-  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-params.schema.json",
+  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-config.schema.json",
   "metadata": {
+    "id": "obex-pnl-business-params",
     "kind": "io.sky.pnl.prime.params",
     "name": "Obex — Business Parameters",
     "version": "1.0.0",

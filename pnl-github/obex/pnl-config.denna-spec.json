@@ -1,0 +1,79 @@
+{
+  "$schema": "https://schemas.denna.io/v1/sky/prime-pnl-config.schema.json",
+  "metadata": {
+    "id": "obex-pnl-config",
+    "kind": "io.sky.pnl.prime.config",
+    "name": "Obex",
+    "version": "1.0.0",
+    "description": "Obex prime PnL configuration: single Ethereum chain, Maple syrupUSDC allocation, and calculation modules. Simplest star — Net Amount equals Maximum Debt Fees with no reimbursements.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:14,219-227",
+        "src/lib/debt-pnl/calculations/obex-maple-exposure.ts",
+        "TOKENS.ts:1009-1015"
+      ]
+    }
+  },
+  "parameters": {
+    "chains": [
+      {
+        "id": "ethereum",
+        "name": "Ethereum",
+        "almProxy": { "value": "0xb6dd7ae22c9922afee0642f9ac13e58633f715a2", "format": "evm" },
+        "vaultProxy": { "value": "0xf275110dfe7b80df66a762f968f59b70babe2b29", "format": "evm" },
+        "features": { "alm": true, "inPnlChains": true }
+      }
+    ],
+    "debtSource": {
+      "chain": "ethereum",
+      "vatAddress": { "value": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b", "format": "evm" }
+    },
+    "allocations": {
+      "ethereum": [
+        {
+          "contract": { "value": "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b", "format": "evm" },
+          "protocol": "Maple",
+          "type": "erc4626",
+          "underlying": "USDC",
+          "underlyingAddress": { "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "format": "evm" },
+          "notes": "syrupUSDC. Primary allocation. NAV priced via ERC4626 convertToAssets()."
+        },
+        {
+          "contract": { "value": "0x6b175474e89094c44da98b954eedeac495271d0f", "format": "evm" },
+          "protocol": "Sky",
+          "type": "erc20",
+          "underlying": "DAI",
+          "notes": "DAI. Asset (POL)."
+        },
+        {
+          "contract": { "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "format": "evm" },
+          "protocol": "Circle",
+          "type": "erc20",
+          "underlying": "USDC",
+          "notes": "USDC. Asset."
+        }
+      ]
+    },
+    "calculationModules": [
+      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true  },
+      { "id": "idleStablecoins",   "name": "Step 2: Idle Stablecoins",    "enabled": false },
+      { "id": "susdsProfitL2",     "name": "Step 3: sUSDS Profit",        "enabled": false },
+      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": false },
+      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": false },
+      { "id": "skyDirectExposure", "name": "Step 4: Sky Direct Exposure", "enabled": false, "notes": "Maple position handled differently — see known issue BUG-1" },
+      { "id": "borrowRateSubsidy", "name": "Borrow Rate Subsidy",         "enabled": false, "notes": "Not eligible — excluded from BORROW_RATE_SUBSIDY_ELIGIBLE_STARS" }
+    ],
+    "borrowRateSubsidy": {
+      "eligible": false
+    },
+    "settlementFormula": "Net Amount = Maximum Debt Fees (no reimbursements, no subsidies)",
+    "knownIssues": [
+      {
+        "id": "BUG-1",
+        "description": "The Obex reimbursement calculation uses an inverted formula (revenue - maxDebtFees) instead of MAX(0, Base Rate Cost - Actual Revenue) as specified by Laniakea. Additionally, it uses maxDebtFeesUsd as base cost instead of principal × rate.",
+        "source": "src/lib/debt-pnl/calculations/obex-maple-exposure.ts:112",
+        "status": "Confirmed. Fix pending."
+      }
+    ]
+  }
+}

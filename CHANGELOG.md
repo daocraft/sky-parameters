@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/daocraft/sky-parameters/compare/v1.0.0...v1.1.0) (2026-02-28)
+
+### Features
+
+* 🎸 add spark and obex pnl config ([975c527](https://github.com/daocraft/sky-parameters/commit/975c5271a3fde76d180973386c1be3c1b4e13b04))
+* 🎸 grove pnl config ([dd1bbca](https://github.com/daocraft/sky-parameters/commit/dd1bbca4e1d2bbc43fc06c88fa768a4f5b445394))
+
 ## 1.0.0 (2026-02-27)
 
 ### Features

@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/daocraft/sky-parameters/compare/v1.1.0...v1.1.1) (2026-02-28)
+
+### Bug Fixes
+
+* 🐛 schema errors ([3ca179a](https://github.com/daocraft/sky-parameters/commit/3ca179a4877a6f0cc498f252fefc08f4d3a0999f))
+
 ## [1.1.0](https://github.com/daocraft/sky-parameters/compare/v1.0.0...v1.1.0) (2026-02-28)
 
 ### Features

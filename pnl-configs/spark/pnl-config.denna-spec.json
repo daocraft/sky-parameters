@@ -19,65 +19,160 @@
       {
         "id": "ethereum",
         "name": "Ethereum",
-        "almProxy": { "value": "0x1601843c5e9bc251a3272907010afa41fa18347e", "format": "evm" },
-        "vaultProxy": { "value": "0x691a6c29e9e96dd897718305427ad5d534db16ba", "format": "evm" },
-        "features": { "alm": true, "lending": true, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+        "almProxy": {
+          "value": "0x1601843c5e9bc251a3272907010afa41fa18347e",
+          "format": "evm"
+        },
+        "vaultProxy": {
+          "value": "0x691a6c29e9e96dd897718305427ad5d534db16ba",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "lending": true,
+          "idleStablecoins": true,
+          "susds": true,
+          "inPnlChains": true
+        }
       },
       {
         "id": "base",
         "name": "Base",
-        "almProxy":   { "value": "0x2917956eff0b5eaf030abdb4ef4296df775009ca", "format": "evm" },
-        "psm3Address": { "value": "0x1601843c5e9bc251a3272907010afa41fa18347e", "format": "evm" },
-        "susdsOracle": { "value": "0xeC0C14Ea7fF20F104496d960FDEBF5a0a0cC14D0", "format": "evm" },
-        "features": { "alm": true, "psm3": true, "lending": true, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+        "almProxy": {
+          "value": "0x2917956eff0b5eaf030abdb4ef4296df775009ca",
+          "format": "evm"
+        },
+        "psm3Address": {
+          "value": "0x1601843c5e9bc251a3272907010afa41fa18347e",
+          "format": "evm"
+        },
+        "susdsOracle": {
+          "value": "0xeC0C14Ea7fF20F104496d960FDEBF5a0a0cC14D0",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "psm3": true,
+          "lending": true,
+          "idleStablecoins": true,
+          "susds": true,
+          "inPnlChains": true
+        }
       },
       {
         "id": "arbitrum",
         "name": "Arbitrum",
-        "almProxy":   { "value": "0x92afd6f2385a90e44da3a8b60fe36f6cbe1d8709", "format": "evm" },
-        "psm3Address": { "value": "0x2b05f8e1cacc6974fd79a673a341fe1f58d27266", "format": "evm" },
-        "susdsOracle": { "value": "0x73750DbD85753074e452B2C27fB9e3B0E75Ff3B8", "format": "evm" },
-        "features": { "alm": true, "psm3": true, "lending": true, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+        "almProxy": {
+          "value": "0x92afd6f2385a90e44da3a8b60fe36f6cbe1d8709",
+          "format": "evm"
+        },
+        "psm3Address": {
+          "value": "0x2b05f8e1cacc6974fd79a673a341fe1f58d27266",
+          "format": "evm"
+        },
+        "susdsOracle": {
+          "value": "0x73750DbD85753074e452B2C27fB9e3B0E75Ff3B8",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "psm3": true,
+          "lending": true,
+          "idleStablecoins": true,
+          "susds": true,
+          "inPnlChains": true
+        }
       },
       {
         "id": "optimism",
         "name": "Optimism",
-        "almProxy":   { "value": "0x876664f0c9ff24d1aa355ce9f1680ae1a5bf36fb", "format": "evm" },
-        "psm3Address": { "value": "0xe0f9978b907853f354d79188a3defbd41978af62", "format": "evm" },
-        "susdsOracle": { "value": "0x15ACEE5F73b36762Ab1a6b7C98787b8148447898", "format": "evm" },
-        "features": { "alm": true, "psm3": true, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+        "almProxy": {
+          "value": "0x876664f0c9ff24d1aa355ce9f1680ae1a5bf36fb",
+          "format": "evm"
+        },
+        "psm3Address": {
+          "value": "0xe0f9978b907853f354d79188a3defbd41978af62",
+          "format": "evm"
+        },
+        "susdsOracle": {
+          "value": "0x15ACEE5F73b36762Ab1a6b7C98787b8148447898",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "psm3": true,
+          "idleStablecoins": true,
+          "susds": true,
+          "inPnlChains": true
+        }
       },
       {
         "id": "unichain",
         "name": "Unichain",
-        "almProxy":   { "value": "0x345e368fccd62266b3f5f37c9a131fd1c39f5869", "format": "evm" },
-        "psm3Address": { "value": "0x7b42ed932f26509465f7ce3faf76ffce1275312f", "format": "evm" },
-        "susdsOracle": { "value": "0x93c81ADc7F98FdBC8C7a15eCBeD312c8F6adbcB3", "format": "evm" },
-        "features": { "alm": true, "psm3": true, "idleStablecoins": true, "susds": true, "inPnlChains": true }
+        "almProxy": {
+          "value": "0x345e368fccd62266b3f5f37c9a131fd1c39f5869",
+          "format": "evm"
+        },
+        "psm3Address": {
+          "value": "0x7b42ed932f26509465f7ce3faf76ffce1275312f",
+          "format": "evm"
+        },
+        "susdsOracle": {
+          "value": "0x93c81ADc7F98FdBC8C7a15eCBeD312c8F6adbcB3",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "psm3": true,
+          "idleStablecoins": true,
+          "susds": true,
+          "inPnlChains": true
+        }
       },
       {
         "id": "avalanche",
         "name": "Avalanche",
-        "almProxy": { "value": "0xece6b0e8a54c2f44e066fbb9234e7157b15b7fec", "format": "evm" },
-        "features": { "alm": true, "lending": true, "inPnlChains": false }
+        "almProxy": {
+          "value": "0xece6b0e8a54c2f44e066fbb9234e7157b15b7fec",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "lending": true,
+          "inPnlChains": false
+        }
       }
     ],
     "debtSource": {
       "chain": "ethereum",
-      "vatAddress": { "value": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b", "format": "evm" }
+      "vatAddress": {
+        "value": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+        "format": "evm"
+      }
     },
-    "psm3Chains": ["base", "arbitrum", "optimism", "unichain"],
+    "psm3Chains": [
+      "base",
+      "arbitrum",
+      "optimism",
+      "unichain"
+    ],
     "allocations": {
       "ethereum": [
         {
-          "contract": { "value": "0x4dedf26112b3ec8ec46e7e31ea5e123490b05b8b", "format": "evm" },
+          "contract": {
+            "value": "0x4dedf26112b3ec8ec46e7e31ea5e123490b05b8b",
+            "format": "evm"
+          },
           "protocol": "SparkLend",
           "type": "atoken",
           "underlying": "DAI",
           "notes": "spDAI."
         },
         {
-          "contract": { "value": "0x73e65dbd630f90604062f6e02fab9138e713edd9", "format": "evm" },
+          "contract": {
+            "value": "0x73e65dbd630f90604062f6e02fab9138e713edd9",
+            "format": "evm"
+          },
           "protocol": "Morpho",
           "type": "erc4626",
           "underlying": "DAI",
@@ -86,17 +181,23 @@
             "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8",
             "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
           ],
-          "notes": "22 markets total — see TOKENS.ts lines 356-377 for full list."
+          "notes": "22 markets total â see TOKENS.ts lines 356-377 for full list."
         },
         {
-          "contract": { "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359", "format": "evm" },
+          "contract": {
+            "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359",
+            "format": "evm"
+          },
           "protocol": "SparkLend",
           "type": "atoken",
           "underlying": "USDS",
           "notes": "spUSDS. SSR address."
         },
         {
-          "contract": { "value": "0xe41a0583334f0dc4e023acd0bfef3667f6fe0597", "format": "evm" },
+          "contract": {
+            "value": "0xe41a0583334f0dc4e023acd0bfef3667f6fe0597",
+            "format": "evm"
+          },
           "protocol": "Morpho",
           "type": "erc4626",
           "underlying": "USDS",
@@ -108,41 +209,59 @@
           ]
         },
         {
-          "contract": { "value": "0x09aa30b182488f769a9824f15e6ce58591da4781", "format": "evm" },
+          "contract": {
+            "value": "0x09aa30b182488f769a9824f15e6ce58591da4781",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "USDS"
         },
         {
-          "contract": { "value": "0x32a6268f9ba3642dda7892add74f1d34469a4259", "format": "evm" },
+          "contract": {
+            "value": "0x32a6268f9ba3642dda7892add74f1d34469a4259",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "USDS",
           "notes": "Second Aave USDS position."
         },
         {
-          "contract": { "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815", "format": "evm" },
+          "contract": {
+            "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815",
+            "format": "evm"
+          },
           "protocol": "SparkLend",
           "type": "atoken",
           "underlying": "USDC",
           "notes": "spUSDC. Direct rate."
         },
         {
-          "contract": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" },
+          "contract": {
+            "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f",
+            "format": "evm"
+          },
           "protocol": "SparkLend",
           "type": "atoken",
           "underlying": "USDT",
           "notes": "spUSDT. Bill always. Direct rate. SSR funded."
         },
         {
-          "contract": { "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d", "format": "evm" },
+          "contract": {
+            "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d",
+            "format": "evm"
+          },
           "protocol": "SparkLend",
           "type": "atoken",
           "underlying": "PYUSD",
           "notes": "spPYUSD. Bill always. Direct rate."
         },
         {
-          "contract": { "value": "0x56a76b428244a50513ec81e225a293d128fd581d", "format": "evm" },
+          "contract": {
+            "value": "0x56a76b428244a50513ec81e225a293d128fd581d",
+            "format": "evm"
+          },
           "protocol": "Morpho",
           "type": "erc4626",
           "underlying": "USDC",
@@ -153,91 +272,133 @@
           ]
         },
         {
-          "contract": { "value": "0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c", "format": "evm" },
+          "contract": {
+            "value": "0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "USDC"
         },
         {
-          "contract": { "value": "0x2bbe31d63e6813e3ac858c04dae43fb2a72b0d11", "format": "evm" },
+          "contract": {
+            "value": "0x2bbe31d63e6813e3ac858c04dae43fb2a72b0d11",
+            "format": "evm"
+          },
           "protocol": "Fluid",
           "type": "erc4626",
           "underlying": "sUSDS"
         },
         {
-          "contract": { "value": "0x00836fe54625be242bcfa286207795405ca4fd10", "format": "evm" },
+          "contract": {
+            "value": "0x00836fe54625be242bcfa286207795405ca4fd10",
+            "format": "evm"
+          },
           "protocol": "Curve",
           "type": "curve",
           "underlying": "USDT",
           "notes": "sUSDS/USDT LP. Active from 2025-11-01."
         },
         {
-          "contract": { "value": "0xa632d59b9b804a956bfaa9b48af3a1b74808fc1f", "format": "evm" },
+          "contract": {
+            "value": "0xa632d59b9b804a956bfaa9b48af3a1b74808fc1f",
+            "format": "evm"
+          },
           "protocol": "Curve",
           "type": "curve",
           "underlying": "PYUSD",
           "notes": "PYUSD/USDS LP."
         },
         {
-          "contract": { "value": "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b", "format": "evm" },
+          "contract": {
+            "value": "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b",
+            "format": "evm"
+          },
           "protocol": "Maple",
           "type": "erc4626",
           "underlying": "USDC",
           "notes": "syrupUSDC."
         },
         {
-          "contract": { "value": "0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041", "format": "evm" },
+          "contract": {
+            "value": "0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041",
+            "format": "evm"
+          },
           "protocol": "Blackrock",
           "type": "buidl",
           "underlying": "USDC",
           "notes": "BUIDL. Sky takes all."
         },
         {
-          "contract": { "value": "0x43415eb6ff9db7e26a15b704e7a3edce97d31c4e", "format": "evm" },
+          "contract": {
+            "value": "0x43415eb6ff9db7e26a15b704e7a3edce97d31c4e",
+            "format": "evm"
+          },
           "protocol": "Superstate",
           "type": "superstate",
           "underlying": "USDC",
           "notes": "USTB."
         },
         {
-          "contract": { "value": "0x14d60e7fdc0d71d8611742720e4c50e7a974020c", "format": "evm" },
+          "contract": {
+            "value": "0x14d60e7fdc0d71d8611742720e4c50e7a974020c",
+            "format": "evm"
+          },
           "protocol": "Superstate",
           "type": "superstate",
           "underlying": "USDC"
         },
         {
-          "contract": { "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86", "format": "evm" },
+          "contract": {
+            "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86",
+            "format": "evm"
+          },
           "protocol": "Centrifuge",
           "type": "centrifuge",
           "underlying": "USDC",
           "notes": "JHST."
         },
         {
-          "contract": { "value": "0x38464507e02c983f20428a6e8566693fe9e422a9", "format": "evm" },
+          "contract": {
+            "value": "0x38464507e02c983f20428a6e8566693fe9e422a9",
+            "format": "evm"
+          },
           "protocol": "Arkis",
           "type": "erc4626",
           "underlying": "USDC"
         },
         {
-          "contract": { "value": "0x49506c3aa028693458d6ee816b2ec28522946872", "format": "evm" },
+          "contract": {
+            "value": "0x49506c3aa028693458d6ee816b2ec28522946872",
+            "format": "evm"
+          },
           "protocol": "Anchorage",
           "type": "anchorage"
         },
         {
-          "contract": { "value": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3", "format": "evm" },
+          "contract": {
+            "value": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+            "format": "evm"
+          },
           "protocol": "Ethena",
           "type": "ethena",
           "notes": "USDe. Sky takes all."
         },
         {
-          "contract": { "value": "0x9d39a5de30e57443bff2a8307a4256c8797a3497", "format": "evm" },
+          "contract": {
+            "value": "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+            "format": "evm"
+          },
           "protocol": "Ethena",
           "type": "erc4626",
           "underlying": "USDe",
           "notes": "sUSDe with cooldown."
         },
         {
-          "contract": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" },
+          "contract": {
+            "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+            "format": "evm"
+          },
           "protocol": "PayPal",
           "type": "erc20",
           "underlying": "PYUSD",
@@ -246,13 +407,19 @@
       ],
       "base": [
         {
-          "contract": { "value": "0x4e65fe4dba92790696d040ac24aa414708f5c0ab", "format": "evm" },
+          "contract": {
+            "value": "0x4e65fe4dba92790696d040ac24aa414708f5c0ab",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "USDC"
         },
         {
-          "contract": { "value": "0x7bfa7c4f149e7415b73bdedfe609237e29cbf34a", "format": "evm" },
+          "contract": {
+            "value": "0x7bfa7c4f149e7415b73bdedfe609237e29cbf34a",
+            "format": "evm"
+          },
           "protocol": "Morpho",
           "type": "erc4626",
           "underlying": "USDC",
@@ -262,7 +429,10 @@
           ]
         },
         {
-          "contract": { "value": "0xf62e339f21d8018940f188f6987bcdf02a849619", "format": "evm" },
+          "contract": {
+            "value": "0xf62e339f21d8018940f188f6987bcdf02a849619",
+            "format": "evm"
+          },
           "protocol": "Fluid",
           "type": "erc4626",
           "underlying": "sUSDS"
@@ -270,13 +440,19 @@
       ],
       "arbitrum": [
         {
-          "contract": { "value": "0x724dc807b04555b71ed48a6896b6f41593b8c637", "format": "evm" },
+          "contract": {
+            "value": "0x724dc807b04555b71ed48a6896b6f41593b8c637",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "USDC"
         },
         {
-          "contract": { "value": "0x3459fcc94390c3372c0f7b4cd3f8795f0e5afe96", "format": "evm" },
+          "contract": {
+            "value": "0x3459fcc94390c3372c0f7b4cd3f8795f0e5afe96",
+            "format": "evm"
+          },
           "protocol": "Fluid",
           "type": "erc4626",
           "underlying": "sUSDS"
@@ -284,13 +460,19 @@
       ],
       "avalanche": [
         {
-          "contract": { "value": "0x28b3a8fb53b741a8fd78c0fb9a6b2393d896a43d", "format": "evm" },
+          "contract": {
+            "value": "0x28b3a8fb53b741a8fd78c0fb9a6b2393d896a43d",
+            "format": "evm"
+          },
           "protocol": "Spark",
           "type": "erc4626",
           "underlying": "USDC"
         },
         {
-          "contract": { "value": "0x625e7708f30ca75bfd92586e17077590c60eb4cd", "format": "evm" },
+          "contract": {
+            "value": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "USDC"
@@ -298,98 +480,333 @@
       ]
     },
     "calculationModules": [
-      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true },
-      { "id": "idleStablecoins",   "name": "Step 2: Idle Stablecoins",    "enabled": true, "notes": "USDS, DAI, USDC on all chains" },
-      { "id": "susdsProfitL2",     "name": "Step 3: sUSDS Profit",        "enabled": true, "notes": "30bps spread credit (L2 only, Ethereum implicit)" },
-      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": true, "notes": "USDS in PSM3 on L2 chains" },
-      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": true, "notes": "sUSDS in PSM3 on L2 chains" },
-      { "id": "skyDirectExposure", "name": "Step 4: Sky Direct Exposure", "enabled": true, "notes": "USDC in PSM3" },
-      { "id": "borrowRateSubsidy", "name": "Borrow Rate Subsidy",         "enabled": true },
-      { "id": "curvePoolHandling", "name": "Curve Pool Handling",         "enabled": true, "notes": "sUSDS/USDT and PYUSD/USDS pools" }
+      {
+        "id": "maxDebtFees",
+        "name": "Step 1: Max Debt Fees",
+        "enabled": true
+      },
+      {
+        "id": "idleStablecoins",
+        "name": "Step 2: Idle Stablecoins",
+        "enabled": true,
+        "notes": "USDS, DAI, USDC on all chains"
+      },
+      {
+        "id": "susdsProfitL2",
+        "name": "Step 3: sUSDS Profit",
+        "enabled": true,
+        "notes": "30bps spread credit (L2 only, Ethereum implicit)"
+      },
+      {
+        "id": "psm3Idle",
+        "name": "PSM3 Idle",
+        "enabled": true,
+        "notes": "USDS in PSM3 on L2 chains"
+      },
+      {
+        "id": "psm3Susds",
+        "name": "PSM3 sUSDS",
+        "enabled": true,
+        "notes": "sUSDS in PSM3 on L2 chains"
+      },
+      {
+        "id": "skyDirectExposure",
+        "name": "Step 4: Sky Direct Exposure",
+        "enabled": true,
+        "notes": "USDC in PSM3"
+      },
+      {
+        "id": "borrowRateSubsidy",
+        "name": "Borrow Rate Subsidy",
+        "enabled": true
+      },
+      {
+        "id": "curvePoolHandling",
+        "name": "Curve Pool Handling",
+        "enabled": true,
+        "notes": "sUSDS/USDT and PYUSD/USDS pools"
+      }
     ],
     "borrowRateSubsidy": {
       "eligible": true,
-      "cap": { "value": 1000000000, "currency": "USD" },
+      "cap": {
+        "value": 100000000,
+        "currency": "USD"
+      },
       "capPeriod": "per day",
       "start": "2026-01-01",
-      "duration": { "value": 24, "unit": "months" }
+      "duration": {
+        "value": 24,
+        "unit": "months"
+      }
     },
     "curvePoolHandling": [
       {
         "name": "sUSDS/USDT",
-        "lpAddress": { "value": "0x00836fe54625be242bcfa286207795405ca4fd10", "format": "evm" },
+        "lpAddress": {
+          "value": "0x00836fe54625be242bcfa286207795405ca4fd10",
+          "format": "evm"
+        },
         "activeFrom": "2025-11-01",
         "treatment": "USDT portion: base rate treatment. sUSDS portion: 30bps spread credit."
       },
       {
         "name": "PYUSD/USDS",
-        "lpAddress": { "value": "0xa632d59b9b804a956bfaa9b48af3a1b74808fc1f", "format": "evm" },
+        "lpAddress": {
+          "value": "0xa632d59b9b804a956bfaa9b48af3a1b74808fc1f",
+          "format": "evm"
+        },
         "treatment": "Full Agent Credit Line Borrow Rate. No idle reimbursement on PYUSD."
       }
     ],
     "oneTimeAdjustments": [
       {
         "month": "2025-12",
-        "address": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" },
-        "amount": { "value": 5815000, "currency": "USD" },
+        "address": {
+          "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+          "format": "evm"
+        },
+        "amount": {
+          "value": 5815000,
+          "currency": "USD"
+        },
         "description": "PayPal PYUSD bulk payments ($1.815M Dec 2 + $4M Dec 29)."
       }
     ],
     "prepayments": [
       {
         "asset": "PYUSD",
-        "address": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" },
-        "amount": { "value": 2000000, "currency": "USD" }
+        "address": {
+          "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+          "format": "evm"
+        },
+        "amount": {
+          "value": 2000000,
+          "currency": "USD"
+        }
       }
     ],
     "addressClassifications": {
       "billAlways": [
-        { "address": { "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d", "format": "evm" }, "asset": "spPYUSD", "reason": "PYUSD SparkLend" },
-        { "address": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "asset": "spUSDT",  "reason": "USDT SparkLend" },
-        { "address": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" }, "asset": "PYUSD",   "reason": "PayPal in-wallet asset" }
+        {
+          "address": {
+            "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d",
+            "format": "evm"
+          },
+          "asset": "spPYUSD",
+          "reason": "PYUSD SparkLend"
+        },
+        {
+          "address": {
+            "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f",
+            "format": "evm"
+          },
+          "asset": "spUSDT",
+          "reason": "USDT SparkLend"
+        },
+        {
+          "address": {
+            "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+            "format": "evm"
+          },
+          "asset": "PYUSD",
+          "reason": "PayPal in-wallet asset"
+        }
       ],
       "skyTakesAll": [
-        { "address": { "value": "0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041", "format": "evm" }, "asset": "BUIDL", "reason": "BlackRock" },
-        { "address": { "value": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3", "format": "evm" }, "asset": "USDe",  "reason": "Ethena" }
+        {
+          "address": {
+            "value": "0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041",
+            "format": "evm"
+          },
+          "asset": "BUIDL",
+          "reason": "BlackRock"
+        },
+        {
+          "address": {
+            "value": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+            "format": "evm"
+          },
+          "asset": "USDe",
+          "reason": "Ethena"
+        }
       ],
       "simplePeriodReturn": [
-        { "address": { "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0", "format": "evm" }, "asset": "RLUSD", "reason": "aEthRLUSD — period return treated as annual rate" },
-        { "address": { "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb", "format": "evm" }, "asset": "RLUSD", "reason": "aHorRwaRLUSD — period return treated as annual rate" }
+        {
+          "address": {
+            "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0",
+            "format": "evm"
+          },
+          "asset": "RLUSD",
+          "reason": "aEthRLUSD â period return treated as annual rate"
+        },
+        {
+          "address": {
+            "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb",
+            "format": "evm"
+          },
+          "asset": "RLUSD",
+          "reason": "aHorRwaRLUSD â period return treated as annual rate"
+        }
       ],
       "directRate": [
-        { "address": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "asset": "spUSDT",  "reason": "Governance-defined fixed rate" },
-        { "address": { "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815", "format": "evm" }, "asset": "spUSDC",  "reason": "Governance-defined fixed rate" },
-        { "address": { "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d", "format": "evm" }, "asset": "spPYUSD", "reason": "Governance-defined fixed rate" }
+        {
+          "address": {
+            "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f",
+            "format": "evm"
+          },
+          "asset": "spUSDT",
+          "reason": "Governance-defined fixed rate"
+        },
+        {
+          "address": {
+            "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815",
+            "format": "evm"
+          },
+          "asset": "spUSDC",
+          "reason": "Governance-defined fixed rate"
+        },
+        {
+          "address": {
+            "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d",
+            "format": "evm"
+          },
+          "asset": "spPYUSD",
+          "reason": "Governance-defined fixed rate"
+        }
       ],
       "ssrFunded": [
-        { "address": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "asset": "spUSDT", "reason": "Has significant saving_V2 cost" }
+        {
+          "address": {
+            "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f",
+            "format": "evm"
+          },
+          "asset": "spUSDT",
+          "reason": "Has significant saving_V2 cost"
+        }
       ],
       "usdsSsr": [
-        { "address": { "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359", "format": "evm" }, "asset": "spUSDS", "reason": "Use sUSDS price growth as custom base rate" }
+        {
+          "address": {
+            "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359",
+            "format": "evm"
+          },
+          "asset": "spUSDS",
+          "reason": "Use sUSDS price growth as custom base rate"
+        }
       ]
     },
     "sparkLendConfig": {
-      "poolAddress": { "value": "0xc13e21b648a5ee794902342038ff3adab66be987", "format": "evm" },
+      "poolAddress": {
+        "value": "0xc13e21b648a5ee794902342038ff3adab66be987",
+        "format": "evm"
+      },
       "underlyingMappings": [
-        { "spToken": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "underlying": { "value": "0xdac17f958d2ee523a2206206994597c13d831ec7", "format": "evm" }, "symbol": "USDT" },
-        { "spToken": { "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d", "format": "evm" }, "underlying": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" }, "symbol": "PYUSD" },
-        { "spToken": { "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359", "format": "evm" }, "underlying": { "value": "0xdc035d45d973e3ec169d2276ddab16f1e407384f", "format": "evm" }, "symbol": "USDS" },
-        { "spToken": { "value": "0x4dedf26112b3ec8ec46e7e31ea5e123490b05b8b", "format": "evm" }, "underlying": { "value": "0x6b175474e89094c44da98b954eedeac495271d0f", "format": "evm" }, "symbol": "DAI" },
-        { "spToken": { "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815", "format": "evm" }, "underlying": { "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "format": "evm" }, "symbol": "USDC" }
+        {
+          "spToken": {
+            "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f",
+            "format": "evm"
+          },
+          "underlying": {
+            "value": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "format": "evm"
+          },
+          "symbol": "USDT"
+        },
+        {
+          "spToken": {
+            "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d",
+            "format": "evm"
+          },
+          "underlying": {
+            "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+            "format": "evm"
+          },
+          "symbol": "PYUSD"
+        },
+        {
+          "spToken": {
+            "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359",
+            "format": "evm"
+          },
+          "underlying": {
+            "value": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+            "format": "evm"
+          },
+          "symbol": "USDS"
+        },
+        {
+          "spToken": {
+            "value": "0x4dedf26112b3ec8ec46e7e31ea5e123490b05b8b",
+            "format": "evm"
+          },
+          "underlying": {
+            "value": "0x6b175474e89094c44da98b954eedeac495271d0f",
+            "format": "evm"
+          },
+          "symbol": "DAI"
+        },
+        {
+          "spToken": {
+            "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815",
+            "format": "evm"
+          },
+          "underlying": {
+            "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "format": "evm"
+          },
+          "symbol": "USDC"
+        }
       ]
     },
     "psm3TokenComposition": {
       "tokens": [
-        { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
-        { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement at Agent Rate (currently Base Rate in code)" },
-        { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        {
+          "token": "USDC",
+          "module": "skyDirectExposure",
+          "treatment": "MAX(0, baseCost - actualYield) reimbursement"
+        },
+        {
+          "token": "USDS",
+          "module": "psm3Idle",
+          "treatment": "Idle reimbursement at Agent Rate (currently Base Rate in code)"
+        },
+        {
+          "token": "sUSDS",
+          "module": "psm3Susds",
+          "treatment": "30bps spread credit"
+        }
       ]
     },
     "psm3SkyDirectExposure": [
-      { "chain": "base",     "usdcAddress": { "value": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", "format": "evm" } },
-      { "chain": "arbitrum", "usdcAddress": { "value": "0xaf88d065e77c8cc2239327c5edb3a432268e5831", "format": "evm" } },
-      { "chain": "optimism", "usdcAddress": { "value": "0x0b2c639c533813f4aa9d7837caf62653d097ff85", "format": "evm" } },
-      { "chain": "unichain", "usdcAddress": { "value": "0x078d782b760474a361dda0af3839290b0ef57ad6", "format": "evm" } }
+      {
+        "chain": "base",
+        "usdcAddress": {
+          "value": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+          "format": "evm"
+        }
+      },
+      {
+        "chain": "arbitrum",
+        "usdcAddress": {
+          "value": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+          "format": "evm"
+        }
+      },
+      {
+        "chain": "optimism",
+        "usdcAddress": {
+          "value": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+          "format": "evm"
+        }
+      },
+      {
+        "chain": "unichain",
+        "usdcAddress": {
+          "value": "0x078d782b760474a361dda0af3839290b0ef57ad6",
+          "format": "evm"
+        }
+      }
     ],
     "ethereumSusdsNotes": "On Ethereum, sUSDS (0xa3931d71877c0e7a3148cb7eb4463524fec27fbd) is excluded from the explicit 30bps spread calculation. It is an ERC4626 vault earning SSR via token appreciation; the debt module already charges SSR + 30bps (Base Rate). Adding an explicit credit would double-count, resulting in net charge of 0."
   }

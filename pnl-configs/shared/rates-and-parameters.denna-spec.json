@@ -4,7 +4,7 @@
     "id": "rates-and-parameters",
     "kind": "io.sky.pnl.shared.rates",
     "name": "Shared Rates and Parameters",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Shared rate parameters, fallback values, borrow rate subsidy program, and time constants used across all primes.",
     "source": {
       "references": [
@@ -18,7 +18,7 @@
   },
   "parameters": {
     "rates": {
-      "ssrSpread": { "value": 30, "unit": "bps" },
+      "ssrSpread": { "value": 40, "unit": "bps" },
       "ssrSpreadDescription": "sUSDS spread representing the difference between Base Rate and SSR. Per Atlas A.3.1.2.2.1: SSR = Base Rate - 30bps. Applied as credit to primes holding sUSDS on L2.",
       "fallbackRates": [
         {

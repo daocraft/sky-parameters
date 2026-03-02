@@ -8,7 +8,7 @@
     "description": "Shared rate parameters, fallback values, borrow rate subsidy program, and time constants used across all primes.",
     "source": {
       "references": [
-        "src/lib/debt-pnl/constants.ts:17-22",
+        "src/lib/debt-pnl/constants.ts:17-23",
         "src/lib/debt-pnl/calculations/debt-fees.ts:14-16,154,166,193",
         "src/lib/settlement/revenue/utils.ts:4",
         "src/lib/debt-pnl/calculations/borrow-rate-subsidy.ts:32-34",

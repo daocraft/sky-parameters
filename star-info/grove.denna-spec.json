@@ -4,7 +4,7 @@
     "id": "grove-prime-config",
     "kind": "io.sky.prime.config",
     "name": "Grove",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Grove star configuration: chains, wallet addresses, and full allocation positions across Ethereum, Base, Avalanche, Plume, and Monad.",
     "source": {
       "references": ["TOKENS.ts", "src/lib/debt-pnl/constants.ts"]

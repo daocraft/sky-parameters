@@ -4,7 +4,7 @@
     "id": "grove-pnl-config",
     "kind": "io.sky.pnl.prime.config",
     "name": "Grove",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Grove prime PnL configuration: chains, allocations, calculation modules, RWA pricing, borrow rate subsidy, PSM3 handling, and known issues.",
     "source": {
       "references": [
@@ -20,74 +20,138 @@
       {
         "id": "ethereum",
         "name": "Ethereum",
-        "almProxy": { "value": "0x491edfb0b8b608044e227225c715981a30f3a44e", "format": "evm" },
-        "vaultProxy": { "value": "0x26512a41c8406800f21094a7a7a0f980f6e25d43", "format": "evm" },
-        "features": { "alm": true, "rwa": true, "inPnlChains": true }
+        "almProxy": {
+          "value": "0x491edfb0b8b608044e227225c715981a30f3a44e",
+          "format": "evm"
+        },
+        "vaultProxy": {
+          "value": "0x26512a41c8406800f21094a7a7a0f980f6e25d43",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "rwa": true,
+          "inPnlChains": true
+        }
       },
       {
         "id": "base",
         "name": "Base",
-        "almProxy": { "value": "0x9b746dbc5269e1df6e4193bcb441c0fbbf1cecee", "format": "evm" },
-        "features": { "alm": true, "psm3": true, "inPnlChains": false }
+        "almProxy": {
+          "value": "0x9b746dbc5269e1df6e4193bcb441c0fbbf1cecee",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "psm3": true,
+          "inPnlChains": false
+        }
       },
       {
         "id": "avalanche",
         "name": "Avalanche",
-        "almProxy": { "value": "0x7107dd8f56642327945294a18a4280c78e153644", "format": "evm" },
-        "features": { "alm": true, "inPnlChains": false }
+        "almProxy": {
+          "value": "0x7107dd8f56642327945294a18a4280c78e153644",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "inPnlChains": false
+        }
       },
       {
         "id": "plume",
         "name": "Plume",
-        "almProxy": { "value": "0x1db91ad50446a671e2231f77e00948e68876f812", "format": "evm" },
-        "features": { "alm": true, "inPnlChains": false }
+        "almProxy": {
+          "value": "0x1db91ad50446a671e2231f77e00948e68876f812",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "inPnlChains": false
+        }
       },
       {
         "id": "monad",
         "name": "Monad",
-        "almProxy": { "value": "0x94b398acb2fce988871218221ea6a4a2b26cccbc", "format": "evm" },
-        "features": { "alm": true, "inPnlChains": false }
+        "almProxy": {
+          "value": "0x94b398acb2fce988871218221ea6a4a2b26cccbc",
+          "format": "evm"
+        },
+        "features": {
+          "alm": true,
+          "inPnlChains": false
+        }
       }
     ],
     "debtSource": {
       "chain": "ethereum",
-      "vatAddress": { "value": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b", "format": "evm" }
+      "vatAddress": {
+        "value": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+        "format": "evm"
+      }
     },
-    "psm3Chains": ["base", "arbitrum", "optimism", "unichain"],
+    "psm3Chains": [
+      "base",
+      "arbitrum",
+      "optimism",
+      "unichain"
+    ],
     "allocations": {
       "ethereum": [
         {
-          "contract": { "value": "0x5a0f93d040de44e78f251b03c43be9cf317dcf64", "format": "evm" },
+          "contract": {
+            "value": "0x5a0f93d040de44e78f251b03c43be9cf317dcf64",
+            "format": "evm"
+          },
           "protocol": "Centrifuge",
           "type": "centrifuge",
           "underlying": "USDC",
-          "vaultAddress": { "value": "0x4880799eE5200fC58DA299e965df644fBf46780B", "format": "evm" },
-          "notes": "JHLCO. Cap $325M — pro-rata reimbursement when exceeded."
+          "vaultAddress": {
+            "value": "0x4880799eE5200fC58DA299e965df644fBf46780B",
+            "format": "evm"
+          },
+          "notes": "JHLCO. Cap $325M â pro-rata reimbursement when exceeded."
         },
         {
-          "contract": { "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86", "format": "evm" },
+          "contract": {
+            "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86",
+            "format": "evm"
+          },
           "protocol": "Centrifuge",
           "type": "centrifuge",
           "underlying": "USDC",
-          "vaultAddress": { "value": "0xFE6920eB6C421f1179cA8c8d4170530CDBdfd77A", "format": "evm" },
+          "vaultAddress": {
+            "value": "0xFE6920eB6C421f1179cA8c8d4170530CDBdfd77A",
+            "format": "evm"
+          },
           "notes": "JHST."
         },
         {
-          "contract": { "value": "0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041", "format": "evm" },
+          "contract": {
+            "value": "0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041",
+            "format": "evm"
+          },
           "protocol": "Blackrock",
           "type": "buidl",
           "underlying": "USDC",
           "notes": "BUIDL."
         },
         {
-          "contract": { "value": "0x43415eb6ff9db7e26a15b704e7a3edce97d31c4e", "format": "evm" },
+          "contract": {
+            "value": "0x43415eb6ff9db7e26a15b704e7a3edce97d31c4e",
+            "format": "evm"
+          },
           "protocol": "Superstate",
           "type": "superstate",
           "underlying": "USDC",
           "notes": "USTB."
         },
         {
-          "contract": { "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0", "format": "evm" },
+          "contract": {
+            "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "RLUSD",
@@ -95,7 +159,10 @@
           "notes": "aEthRLUSD. Simple period return."
         },
         {
-          "contract": { "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb", "format": "evm" },
+          "contract": {
+            "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "RLUSD",
@@ -103,41 +170,59 @@
           "notes": "aHorRwaRLUSD. Simple period return."
         },
         {
-          "contract": { "value": "0x68215b6533c47ff9f7125ac95adf00fe4a62f79e", "format": "evm" },
+          "contract": {
+            "value": "0x68215b6533c47ff9f7125ac95adf00fe4a62f79e",
+            "format": "evm"
+          },
           "protocol": "Aave",
           "type": "atoken",
           "underlying": "USDC",
           "activeFromBlock": 23132230
         },
         {
-          "contract": { "value": "0x8292bb45bf1ee4d140127049757c2e0ff06317ed", "format": "evm" },
+          "contract": {
+            "value": "0x8292bb45bf1ee4d140127049757c2e0ff06317ed",
+            "format": "evm"
+          },
           "protocol": "Ripple",
           "type": "erc20",
           "notes": "RLUSD token."
         },
         {
-          "contract": { "value": "0x51c2d74017390cbbd30550179a16a1c28f7210fc", "format": "evm" },
+          "contract": {
+            "value": "0x51c2d74017390cbbd30550179a16a1c28f7210fc",
+            "format": "evm"
+          },
           "protocol": "Securitize",
           "type": "securitize",
           "underlying": "USDC",
           "activeFromBlock": 24041058
         },
         {
-          "contract": { "value": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a", "format": "evm" },
+          "contract": {
+            "value": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+            "format": "evm"
+          },
           "protocol": "Agora",
           "type": "erc20",
           "activeFromBlock": 24380799,
           "notes": "AUSD."
         },
         {
-          "contract": { "value": "0xe79c1c7e24755574438a26d5e062ad2626c04662", "format": "evm" },
+          "contract": {
+            "value": "0xe79c1c7e24755574438a26d5e062ad2626c04662",
+            "format": "evm"
+          },
           "protocol": "Curve",
           "type": "curve",
           "underlying": "AUSD",
           "activeFromBlock": 24380799
         },
         {
-          "contract": { "value": "0xbafead7c60ea473758ed6c6021505e8bbd7e8e5d", "format": "evm" },
+          "contract": {
+            "value": "0xbafead7c60ea473758ed6c6021505e8bbd7e8e5d",
+            "format": "evm"
+          },
           "protocol": "Uniswap",
           "type": "uni_v3_pool",
           "underlying": "USDC",
@@ -145,7 +230,10 @@
           "notes": "Block 99999999 is placeholder."
         },
         {
-          "contract": { "value": "0xbeef2b5fd3d94469b7782aebe6364e6e6fb1b709", "format": "evm" },
+          "contract": {
+            "value": "0xbeef2b5fd3d94469b7782aebe6364e6e6fb1b709",
+            "format": "evm"
+          },
           "protocol": "Steakhouse",
           "type": "erc4626",
           "underlying": "USDC",
@@ -154,7 +242,10 @@
       ],
       "base": [
         {
-          "contract": { "value": "0xbeef2d50b428675a1921bc6bbf4bfb9d8cf1461a", "format": "evm" },
+          "contract": {
+            "value": "0xbeef2d50b428675a1921bc6bbf4bfb9d8cf1461a",
+            "format": "evm"
+          },
           "protocol": "Morpho",
           "type": "erc4626",
           "underlying": "USDC",
@@ -163,14 +254,23 @@
       ],
       "avalanche": [
         {
-          "contract": { "value": "0x58f93d6b1ef2f44ec379cb975657c132cbed3b6b", "format": "evm" },
+          "contract": {
+            "value": "0x58f93d6b1ef2f44ec379cb975657c132cbed3b6b",
+            "format": "evm"
+          },
           "protocol": "Centrifuge",
           "type": "centrifuge",
           "underlying": "USDC",
-          "vaultAddress": { "value": "0x1121F4e21eD8B9BC1BB9A2952cDD8639aC897784", "format": "evm" }
+          "vaultAddress": {
+            "value": "0x1121F4e21eD8B9BC1BB9A2952cDD8639aC897784",
+            "format": "evm"
+          }
         },
         {
-          "contract": { "value": "0x2c0adff8e114f3ca106051144353ac703d24b901", "format": "evm" },
+          "contract": {
+            "value": "0x2c0adff8e114f3ca106051144353ac703d24b901",
+            "format": "evm"
+          },
           "protocol": "Arch",
           "type": "galaxy_clo",
           "underlying": "USDC",
@@ -179,41 +279,65 @@
       ],
       "plume": [
         {
-          "contract": { "value": "0x9477724bb54ad5417de8baff29e59df3fb4da74f", "format": "evm" },
+          "contract": {
+            "value": "0x9477724bb54ad5417de8baff29e59df3fb4da74f",
+            "format": "evm"
+          },
           "protocol": "Centrifuge",
           "type": "centrifuge_feeder",
-          "vaultAddress": { "value": "0x354a9222571259457B2e98b2285B62e6a9bf4eD3", "format": "evm" }
+          "vaultAddress": {
+            "value": "0x354a9222571259457B2e98b2285B62e6a9bf4eD3",
+            "format": "evm"
+          }
         },
         {
-          "contract": { "value": "0xa5d465251fbcc907f5dd6bb2145488dfc6a2627b", "format": "evm" },
+          "contract": {
+            "value": "0xa5d465251fbcc907f5dd6bb2145488dfc6a2627b",
+            "format": "evm"
+          },
           "protocol": "Centrifuge",
           "type": "centrifuge_feeder",
           "activeFromBlock": 41311106,
-          "vaultAddress": { "value": "0x354a9222571259457B2e98b2285B62e6a9bf4eD3", "format": "evm" }
+          "vaultAddress": {
+            "value": "0x354a9222571259457B2e98b2285B62e6a9bf4eD3",
+            "format": "evm"
+          }
         }
       ],
       "monad": [
         {
-          "contract": { "value": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a", "format": "evm" },
+          "contract": {
+            "value": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+            "format": "evm"
+          },
           "protocol": "Agora",
           "type": "erc20",
           "activeFromBlock": 36870131,
           "notes": "AUSD."
         },
         {
-          "contract": { "value": "0x754704bc059f8c67012fed69bc8a327a5aafb603", "format": "evm" },
+          "contract": {
+            "value": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+            "format": "evm"
+          },
           "protocol": "Circle",
           "type": "erc20",
           "notes": "USDC."
         },
         {
-          "contract": { "value": "0x32841a8fb53b741a8fd78c0fb9a6b2393d896a43d", "format": "evm" },
+          "contract": {
+            "value": "0x32841a8fb53b741a8fd78c0fb9a6b2393d896a43d",
+            "format": "evm"
+          },
           "protocol": "Morpho",
           "type": "erc4626",
           "notes": "6 markets."
         },
         {
-          "contract": { "value": "0x7197e214c0b767cfb76fb734ab638e2c192f4e53", "format": "evm" },
+          "contract": {
+            "value": "0x7197e214c0b767cfb76fb734ab638e2c192f4e53",
+            "format": "evm"
+          },
           "protocol": "Uniswap",
           "type": "uni_v3_lp",
           "activeFromBlock": 39598901
@@ -221,70 +345,160 @@
       ]
     },
     "calculationModules": [
-      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true,  "notes": "TWA Debt × Base Rate" },
-      { "id": "idleStablecoins",   "name": "Step 2: Idle Stablecoins",    "enabled": false, "notes": "Grove has no separate idle stablecoin module" },
-      { "id": "susdsProfitL2",     "name": "Step 3: sUSDS Profit",        "enabled": false, "notes": "No sUSDS positions for Grove" },
-      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": true,  "notes": "USDS in PSM3 on L2 chains — uses shared PSM3 addresses" },
-      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": true,  "notes": "sUSDS in PSM3 on L2 chains — uses shared PSM3 addresses" },
-      { "id": "skyDirectExposure", "name": "Step 4: Sky Direct Exposure", "enabled": true,  "notes": "RWA assets (JHLCO, JHST, BUIDL, USTB)" },
-      { "id": "borrowRateSubsidy", "name": "Borrow Rate Subsidy",         "enabled": true,  "notes": "Eligible per BORROW_RATE_SUBSIDY_ELIGIBLE_STARS" }
+      {
+        "id": "maxDebtFees",
+        "name": "Step 1: Max Debt Fees",
+        "enabled": true,
+        "notes": "TWA Debt Ã Base Rate"
+      },
+      {
+        "id": "idleStablecoins",
+        "name": "Step 2: Idle Stablecoins",
+        "enabled": false,
+        "notes": "Grove has no separate idle stablecoin module"
+      },
+      {
+        "id": "susdsProfitL2",
+        "name": "Step 3: sUSDS Profit",
+        "enabled": false,
+        "notes": "No sUSDS positions for Grove"
+      },
+      {
+        "id": "psm3Idle",
+        "name": "PSM3 Idle",
+        "enabled": true,
+        "notes": "USDS in PSM3 on L2 chains â uses shared PSM3 addresses"
+      },
+      {
+        "id": "psm3Susds",
+        "name": "PSM3 sUSDS",
+        "enabled": true,
+        "notes": "sUSDS in PSM3 on L2 chains â uses shared PSM3 addresses"
+      },
+      {
+        "id": "skyDirectExposure",
+        "name": "Step 4: Sky Direct Exposure",
+        "enabled": true,
+        "notes": "RWA assets (JHLCO, JHST, BUIDL, USTB)"
+      },
+      {
+        "id": "borrowRateSubsidy",
+        "name": "Borrow Rate Subsidy",
+        "enabled": true,
+        "notes": "Eligible per BORROW_RATE_SUBSIDY_ELIGIBLE_STARS"
+      }
     ],
     "borrowRateSubsidy": {
       "eligible": true,
-      "cap": { "value": 1000000000, "currency": "USD" },
+      "cap": {
+        "value": 1000000000,
+        "currency": "USD"
+      },
       "capPeriod": "per day",
       "start": "2026-01-01",
-      "duration": { "value": 24, "unit": "months" }
+      "duration": {
+        "value": 24,
+        "unit": "months"
+      }
     },
     "assetCaps": [
       {
         "asset": "JHLCO",
-        "cap": { "value": 325000000, "currency": "USD" },
+        "cap": {
+          "value": 325000000,
+          "currency": "USD"
+        },
         "effect": "When balance exceeds cap, Sky Direct Exposure reimbursement is calculated pro-rata. Excess reverts to standard allocation treatment."
       }
     ],
     "addressClassifications": {
       "simplePeriodReturn": [
         {
-          "address": { "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0", "format": "evm" },
+          "address": {
+            "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0",
+            "format": "evm"
+          },
           "asset": "RLUSD",
-          "reason": "aEthRLUSD — period return treated as annual rate"
+          "reason": "aEthRLUSD â period return treated as annual rate"
         },
         {
-          "address": { "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb", "format": "evm" },
+          "address": {
+            "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb",
+            "format": "evm"
+          },
           "asset": "RLUSD",
-          "reason": "aHorRwaRLUSD — period return treated as annual rate"
+          "reason": "aHorRwaRLUSD â period return treated as annual rate"
         }
       ]
     },
     "psm3TokenComposition": {
       "tokens": [
-        { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
-        { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement" },
-        { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        {
+          "token": "USDC",
+          "module": "skyDirectExposure",
+          "treatment": "MAX(0, baseCost - actualYield) reimbursement"
+        },
+        {
+          "token": "USDS",
+          "module": "psm3Idle",
+          "treatment": "Idle reimbursement"
+        },
+        {
+          "token": "sUSDS",
+          "module": "psm3Susds",
+          "treatment": "30bps spread credit"
+        }
       ]
     },
     "pricingConfig": {
       "sources": [
-        { "asset": "JHLCO", "source": "Centrifuge GraphQL API", "method": "NAV price from https://api.centrifuge.io/graphql" },
-        { "asset": "JHST",  "source": "Centrifuge GraphQL API", "method": "NAV price from https://api.centrifuge.io/graphql" },
-        { "asset": "BUIDL", "source": "On-chain", "method": "ERC4626 convertToAssets() or direct price feed" },
-        { "asset": "USTB",  "source": "On-chain", "method": "Direct price feed" }
+        {
+          "asset": "JHLCO",
+          "source": "Centrifuge GraphQL API",
+          "method": "NAV price from https://api.centrifuge.io/graphql"
+        },
+        {
+          "asset": "JHST",
+          "source": "Centrifuge GraphQL API",
+          "method": "NAV price from https://api.centrifuge.io/graphql"
+        },
+        {
+          "asset": "BUIDL",
+          "source": "On-chain",
+          "method": "ERC4626 convertToAssets() or direct price feed"
+        },
+        {
+          "asset": "USTB",
+          "source": "On-chain",
+          "method": "Direct price feed"
+        }
       ],
       "centrifugeTokenMappings": [
         {
-          "address": { "value": "0x5a0f93d040de44e78f251b03c43be9cf317dcf64", "format": "evm" },
+          "address": {
+            "value": "0x5a0f93d040de44e78f251b03c43be9cf317dcf64",
+            "format": "evm"
+          },
           "tokenId": "0x00010000000000070000000000000001",
           "asset": "JHLCO"
         },
         {
-          "address": { "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86", "format": "evm" },
+          "address": {
+            "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86",
+            "format": "evm"
+          },
           "tokenId": "0x00010000000000060000000000000001",
           "asset": "JHST"
         }
       ],
-      "prePeriodBuffer":  { "value": 7, "unit": "days" },
-      "postPeriodBuffer": { "value": 1, "unit": "days" }
+      "prePeriodBuffer": {
+        "value": 7,
+        "unit": "days"
+      },
+      "postPeriodBuffer": {
+        "value": 1,
+        "unit": "days"
+      }
     },
     "knownIssues": [
       {

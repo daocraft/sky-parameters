@@ -11,7 +11,7 @@
         "src/lib/debt-pnl/constants.ts",
         "src/lib/debt-pnl/debt-pnl.service.ts:118",
         "src/lib/debt-pnl/calculations/grove-rwa-exposure.ts",
-        "TOKENS.ts:990-1008"
+        "TOKENS.ts:990-1009"
       ]
     }
   },
@@ -62,7 +62,7 @@
           "type": "centrifuge",
           "underlying": "USDC",
           "vaultAddress": { "value": "0x4880799eE5200fC58DA299e965df644fBf46780B", "format": "evm" },
-          "notes": "JHLCO. Cap $325M — pro-rata reimbursement when exceeded."
+          "notes": "JHLCO. Cap $325M â pro-rata reimbursement when exceeded."
         },
         {
           "contract": { "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86", "format": "evm" },
@@ -221,11 +221,11 @@
       ]
     },
     "calculationModules": [
-      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true,  "notes": "TWA Debt × Base Rate" },
+      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true,  "notes": "TWA Debt Ã Base Rate" },
       { "id": "idleStablecoins",   "name": "Step 2: Idle Stablecoins",    "enabled": false, "notes": "Grove has no separate idle stablecoin module" },
       { "id": "susdsProfitL2",     "name": "Step 3: sUSDS Profit",        "enabled": false, "notes": "No sUSDS positions for Grove" },
-      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": true,  "notes": "USDS in PSM3 on L2 chains — uses shared PSM3 addresses" },
-      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": true,  "notes": "sUSDS in PSM3 on L2 chains — uses shared PSM3 addresses" },
+      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": true,  "notes": "USDS in PSM3 on L2 chains â uses shared PSM3 addresses" },
+      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": true,  "notes": "sUSDS in PSM3 on L2 chains â uses shared PSM3 addresses" },
       { "id": "skyDirectExposure", "name": "Step 4: Sky Direct Exposure", "enabled": true,  "notes": "RWA assets (JHLCO, JHST, BUIDL, USTB)" },
       { "id": "borrowRateSubsidy", "name": "Borrow Rate Subsidy",         "enabled": true,  "notes": "Eligible per BORROW_RATE_SUBSIDY_ELIGIBLE_STARS" }
     ],
@@ -248,12 +248,12 @@
         {
           "address": { "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0", "format": "evm" },
           "asset": "RLUSD",
-          "reason": "aEthRLUSD — period return treated as annual rate"
+          "reason": "aEthRLUSD â period return treated as annual rate"
         },
         {
           "address": { "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb", "format": "evm" },
           "asset": "RLUSD",
-          "reason": "aHorRwaRLUSD — period return treated as annual rate"
+          "reason": "aHorRwaRLUSD â period return treated as annual rate"
         }
       ]
     },
@@ -283,7 +283,7 @@
           "asset": "JHST"
         }
       ],
-      "prePeriodBuffer":  { "value": 7, "unit": "days" },
+      "prePeriodBuffer": { "value": 7, "unit": "days" },
       "postPeriodBuffer": { "value": 1, "unit": "days" }
     },
     "knownIssues": [

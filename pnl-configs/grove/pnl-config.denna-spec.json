@@ -57,14 +57,6 @@
     "allocations": {
       "ethereum": [
         {
-          "contract": { "value": "0x5a0f93d040de44e78f251b03c43be9cf317dcf64", "format": "evm" },
-          "protocol": "Centrifuge",
-          "type": "centrifuge",
-          "underlying": "USDC",
-          "vaultAddress": { "value": "0x4880799eE5200fC58DA299e965df644fBf46780B", "format": "evm" },
-          "notes": "JHLCO. Cap $325M — pro-rata reimbursement when exceeded."
-        },
-        {
           "contract": { "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86", "format": "evm" },
           "protocol": "Centrifuge",
           "type": "centrifuge",

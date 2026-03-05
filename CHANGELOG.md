@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/daocraft/sky-parameters/compare/v1.1.1...v1.2.0) (2026-03-05)
+
+### Features
+
+* 🎸 update files to latest spec version ([3abd6f5](https://github.com/daocraft/sky-parameters/commit/3abd6f524d219a6a8a2dc2582aec214df1d2bb80))
+
 ## [1.1.1](https://github.com/daocraft/sky-parameters/compare/v1.1.0...v1.1.1) (2026-02-28)
 
 ### Bug Fixes

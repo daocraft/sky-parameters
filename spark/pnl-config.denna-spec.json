@@ -1,0 +1,173 @@
+{
+  "$schema": "https://spec.denna.io/v1/defi/pnl-config.schema.json",
+  "metadata": {
+    "id": "spark-pnl-config",
+    "kind": "io.denna.defi.pnl-config",
+    "name": "Spark",
+    "version": "1.0.0",
+    "description": "Spark PnL configuration: calculation modules, PSM3 handling, SparkLend config, address classifications, and adjustments.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts",
+        "src/lib/pnl-utils/constants/addresses.ts",
+        "TOKENS.ts:972-988"
+      ]
+    }
+  },
+  "parameters": {
+    "calculationModules": [
+      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true },
+      { "id": "idleStablecoins",   "name": "Step 2: Idle Stablecoins",    "enabled": true, "notes": "USDS, DAI, USDC on all chains" },
+      { "id": "susdsProfitL2",     "name": "Step 3: sUSDS Profit",        "enabled": true, "notes": "30bps spread credit (L2 only; Ethereum sUSDS is implicit via debt/SSR interaction)" },
+      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": true, "notes": "USDS in PSM3 on L2 chains" },
+      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": true, "notes": "sUSDS in PSM3 on L2 chains" },
+      { "id": "skyDirectExposure", "name": "Step 4: Sky Direct Exposure", "enabled": true, "notes": "USDC in PSM3" },
+      { "id": "borrowRateSubsidy", "name": "Borrow Rate Subsidy",         "enabled": true },
+      { "id": "lpPoolHandling",    "name": "LP Pool Handling",            "enabled": true, "notes": "sUSDS/USDT and PYUSD/USDS Curve pools" }
+    ],
+    "subsidyPrograms": [
+      {
+        "name": "Borrow Rate Subsidy",
+        "eligible": true,
+        "cap": { "value": 1000000000, "currency": "USD" },
+        "capPeriod": "per day",
+        "start": "2026-01-01",
+        "duration": { "value": 24, "unit": "months" }
+      }
+    ],
+    "lpPoolHandling": [
+      {
+        "protocol": "curve",
+        "name": "sUSDS/USDT",
+        "lpAddress": { "value": "0x00836fe54625be242bcfa286207795405ca4fd10", "format": "evm" },
+        "activeFrom": "2025-11-01",
+        "treatment": "USDT portion: base rate treatment. sUSDS portion: 30bps spread credit."
+      },
+      {
+        "protocol": "curve",
+        "name": "PYUSD/USDS",
+        "lpAddress": { "value": "0xa632d59b9b804a956bfaa9b48af3a1b74808fc1f", "format": "evm" },
+        "treatment": "Full Agent Credit Line Borrow Rate. No idle reimbursement on PYUSD."
+      }
+    ],
+    "oneTimeAdjustments": [
+      {
+        "month": "2025-12",
+        "address": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" },
+        "amount": { "value": 5815000, "currency": "USD" },
+        "description": "PayPal PYUSD bulk payments ($1.815M Dec 2 + $4M Dec 29)."
+      }
+    ],
+    "prepayments": [
+      {
+        "asset": "PYUSD",
+        "address": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" },
+        "amount": { "value": 2000000, "currency": "USD" }
+      }
+    ],
+    "addressClassifications": {
+      "billAlways": [
+        { "address": { "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d", "format": "evm" }, "asset": "spPYUSD", "reason": "PYUSD SparkLend" },
+        { "address": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "asset": "spUSDT",  "reason": "USDT SparkLend" },
+        { "address": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" }, "asset": "PYUSD",   "reason": "PayPal in-wallet asset" }
+      ],
+      "skyTakesAll": [
+        { "address": { "value": "0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041", "format": "evm" }, "asset": "BUIDL", "reason": "BlackRock" },
+        { "address": { "value": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3", "format": "evm" }, "asset": "USDe",  "reason": "Ethena" }
+      ],
+      "simplePeriodReturn": [
+        { "address": { "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0", "format": "evm" }, "asset": "RLUSD", "reason": "aEthRLUSD — period return treated as annual rate" },
+        { "address": { "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb", "format": "evm" }, "asset": "RLUSD", "reason": "aHorRwaRLUSD — period return treated as annual rate" }
+      ],
+      "directRate": [
+        { "address": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "asset": "spUSDT",  "reason": "Governance-defined fixed rate" },
+        { "address": { "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815", "format": "evm" }, "asset": "spUSDC",  "reason": "Governance-defined fixed rate" },
+        { "address": { "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d", "format": "evm" }, "asset": "spPYUSD", "reason": "Governance-defined fixed rate" }
+      ],
+      "ssrFunded": [
+        { "address": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "asset": "spUSDT", "reason": "Has significant saving_V2 cost" }
+      ],
+      "usdsSsr": [
+        { "address": { "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359", "format": "evm" }, "asset": "spUSDS", "reason": "Use sUSDS price growth as custom base rate" }
+      ]
+    },
+    "lendingProtocols": [
+      {
+        "protocol": "sparklend",
+        "poolAddress": { "value": "0xc13e21b648a5ee794902342038ff3adab66be987", "format": "evm" },
+        "underlyingMappings": [
+          { "spToken": { "value": "0xe7df13b8e3d6740fe17cbe928c7334243d86c92f", "format": "evm" }, "underlying": { "value": "0xdac17f958d2ee523a2206206994597c13d831ec7", "format": "evm" }, "symbol": "USDT" },
+          { "spToken": { "value": "0x779224df1c756b4edd899854f32a53e8c2b2ce5d", "format": "evm" }, "underlying": { "value": "0x6c3ea9036406852006290770bedfcaba0e23a0e8", "format": "evm" }, "symbol": "PYUSD" },
+          { "spToken": { "value": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359", "format": "evm" }, "underlying": { "value": "0xdc035d45d973e3ec169d2276ddab16f1e407384f", "format": "evm" }, "symbol": "USDS" },
+          { "spToken": { "value": "0x4dedf26112b3ec8ec46e7e31ea5e123490b05b8b", "format": "evm" }, "underlying": { "value": "0x6b175474e89094c44da98b954eedeac495271d0f", "format": "evm" }, "symbol": "DAI" },
+          { "spToken": { "value": "0x377c3bd93f2a2984e1e7be6a5c22c525ed4a4815", "format": "evm" }, "underlying": { "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "format": "evm" }, "symbol": "USDC" }
+        ]
+      }
+    ],
+    "stabilityModules": [
+      {
+        "address": { "value": "0x1601843c5e9bc251a3272907010afa41fa18347e", "format": "evm" },
+        "chain": "base",
+        "tokens": [
+          { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
+          { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement at Agent Rate (currently Base Rate in code)" },
+          { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        ]
+      },
+      {
+        "address": { "value": "0x2b05f8e1cacc6974fd79a673a341fe1f58d27266", "format": "evm" },
+        "chain": "arbitrum",
+        "tokens": [
+          { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
+          { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement at Agent Rate (currently Base Rate in code)" },
+          { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        ]
+      },
+      {
+        "address": { "value": "0xe0f9978b907853f354d79188a3defbd41978af62", "format": "evm" },
+        "chain": "optimism",
+        "tokens": [
+          { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
+          { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement at Agent Rate (currently Base Rate in code)" },
+          { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        ]
+      },
+      {
+        "address": { "value": "0x7b42ed932f26509465f7ce3faf76ffce1275312f", "format": "evm" },
+        "chain": "unichain",
+        "tokens": [
+          { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
+          { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement at Agent Rate (currently Base Rate in code)" },
+          { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        ]
+      }
+    ],
+    "directExposures": [
+      {
+        "chain": "base",
+        "moduleAddress": { "value": "0x1601843c5e9bc251a3272907010afa41fa18347e", "format": "evm" },
+        "assetAddress":  { "value": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", "format": "evm" },
+        "notes": "USDC in PSM3 Base. Sky Direct Exposure treatment."
+      },
+      {
+        "chain": "arbitrum",
+        "moduleAddress": { "value": "0x2b05f8e1cacc6974fd79a673a341fe1f58d27266", "format": "evm" },
+        "assetAddress":  { "value": "0xaf88d065e77c8cc2239327c5edb3a432268e5831", "format": "evm" },
+        "notes": "USDC in PSM3 Arbitrum. Sky Direct Exposure treatment."
+      },
+      {
+        "chain": "optimism",
+        "moduleAddress": { "value": "0xe0f9978b907853f354d79188a3defbd41978af62", "format": "evm" },
+        "assetAddress":  { "value": "0x0b2c639c533813f4aa9d7837caf62653d097ff85", "format": "evm" },
+        "notes": "USDC in PSM3 Optimism. Sky Direct Exposure treatment."
+      },
+      {
+        "chain": "unichain",
+        "moduleAddress": { "value": "0x7b42ed932f26509465f7ce3faf76ffce1275312f", "format": "evm" },
+        "assetAddress":  { "value": "0x078d782b760474a361dda0af3839290b0ef57ad6", "format": "evm" },
+        "notes": "USDC in PSM3 Unichain. Sky Direct Exposure treatment."
+      }
+    ],
+    "accountingNotes": "On Ethereum, sUSDS (0xa3931d71877c0e7a3148cb7eb4463524fec27fbd) is excluded from the explicit 30bps spread calculation. It is an ERC4626 vault earning SSR via token appreciation; the debt module already charges SSR + 30bps (Base Rate). Adding an explicit credit would double-count, resulting in net charge of 0."
+  }
+}

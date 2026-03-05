@@ -1,0 +1,43 @@
+{
+  "$schema": "https://spec.denna.io/v1/defi/pnl-config.schema.json",
+  "metadata": {
+    "id": "obex-pnl-config",
+    "kind": "io.denna.defi.pnl-config",
+    "name": "Obex",
+    "version": "1.0.0",
+    "description": "Obex PnL configuration: simplest star. Net Amount equals Maximum Debt Fees — no reimbursements, no subsidies.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts:14,219-227",
+        "src/lib/debt-pnl/calculations/obex-maple-exposure.ts",
+        "TOKENS.ts:1009-1015"
+      ]
+    }
+  },
+  "parameters": {
+    "calculationModules": [
+      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true },
+      { "id": "idleStablecoins",   "name": "Step 2: Idle Stablecoins",    "enabled": false },
+      { "id": "susdsProfitL2",     "name": "Step 3: sUSDS Profit",        "enabled": false },
+      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": false },
+      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": false },
+      { "id": "skyDirectExposure", "name": "Step 4: Sky Direct Exposure", "enabled": false, "notes": "Maple position handled differently — see known issue BUG-1" },
+      { "id": "borrowRateSubsidy", "name": "Borrow Rate Subsidy",         "enabled": false, "notes": "Not eligible — excluded from BORROW_RATE_SUBSIDY_ELIGIBLE_STARS" }
+    ],
+    "subsidyPrograms": [
+      {
+        "name": "Borrow Rate Subsidy",
+        "eligible": false
+      }
+    ],
+    "accountingNotes": "Net Amount = Maximum Debt Fees. No reimbursements and no subsidies apply. Maple syrupUSDC revenue is not offset against debt fees in the current implementation (see BUG-1).",
+    "knownIssues": [
+      {
+        "id": "BUG-1",
+        "description": "The Obex reimbursement calculation uses an inverted formula (revenue - maxDebtFees) instead of MAX(0, Base Rate Cost - Actual Revenue) as specified. Additionally, it uses maxDebtFeesUsd as base cost instead of principal × rate.",
+        "source": "src/lib/debt-pnl/calculations/obex-maple-exposure.ts:112",
+        "status": "Confirmed. Fix pending."
+      }
+    ]
+  }
+}

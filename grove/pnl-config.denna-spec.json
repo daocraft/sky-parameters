@@ -1,0 +1,108 @@
+{
+  "$schema": "https://spec.denna.io/v1/defi/pnl-config.schema.json",
+  "metadata": {
+    "id": "grove-pnl-config",
+    "kind": "io.denna.defi.pnl-config",
+    "name": "Grove",
+    "version": "1.0.0",
+    "description": "Grove PnL configuration: calculation modules, RWA pricing, asset caps, PSM3 handling, borrow rate subsidy, and known issues.",
+    "source": {
+      "references": [
+        "src/lib/debt-pnl/constants.ts",
+        "src/lib/debt-pnl/debt-pnl.service.ts:118",
+        "src/lib/debt-pnl/calculations/grove-rwa-exposure.ts",
+        "TOKENS.ts:990-1008"
+      ]
+    }
+  },
+  "parameters": {
+    "calculationModules": [
+      { "id": "maxDebtFees",       "name": "Step 1: Max Debt Fees",       "enabled": true, "notes": "TWA Debt × Base Rate" },
+      { "id": "idleStablecoins",   "name": "Step 2: Idle Stablecoins",    "enabled": false, "notes": "Grove has no separate idle stablecoin module" },
+      { "id": "susdsProfitL2",     "name": "Step 3: sUSDS Profit",        "enabled": false, "notes": "No sUSDS positions for Grove" },
+      { "id": "psm3Idle",          "name": "PSM3 Idle",                   "enabled": true, "notes": "USDS in PSM3 on L2 chains — uses shared PSM3 addresses" },
+      { "id": "psm3Susds",         "name": "PSM3 sUSDS",                  "enabled": true, "notes": "sUSDS in PSM3 on L2 chains — uses shared PSM3 addresses" },
+      { "id": "skyDirectExposure", "name": "Step 4: Sky Direct Exposure", "enabled": true, "notes": "RWA assets (JHLCO, JHST, BUIDL, USTB)" },
+      { "id": "borrowRateSubsidy", "name": "Borrow Rate Subsidy",         "enabled": true, "notes": "Eligible per BORROW_RATE_SUBSIDY_ELIGIBLE_STARS" }
+    ],
+    "subsidyPrograms": [
+      {
+        "name": "Borrow Rate Subsidy",
+        "eligible": true,
+        "cap": { "value": 1000000000, "currency": "USD" },
+        "capPeriod": "per day",
+        "start": "2026-01-01",
+        "duration": { "value": 24, "unit": "months" }
+      }
+    ],
+    "assetCaps": [
+      {
+        "asset": "JHLCO",
+        "cap": { "value": 325000000, "currency": "USD" },
+        "effect": "When balance exceeds cap, Sky Direct Exposure reimbursement is calculated pro-rata. Excess reverts to standard allocation treatment."
+      }
+    ],
+    "addressClassifications": {
+      "simplePeriodReturn": [
+        { "address": { "value": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0", "format": "evm" }, "asset": "RLUSD", "reason": "aEthRLUSD — period return treated as annual rate" },
+        { "address": { "value": "0xe3190143eb552456f88464662f0c0c4ac67a77eb", "format": "evm" }, "asset": "RLUSD", "reason": "aHorRwaRLUSD — period return treated as annual rate" }
+      ]
+    },
+    "pricingConfig": {
+      "sources": [
+        { "asset": "JHLCO", "source": "Centrifuge GraphQL API", "method": "NAV price from https://api.centrifuge.io/graphql" },
+        { "asset": "JHST",  "source": "Centrifuge GraphQL API", "method": "NAV price from https://api.centrifuge.io/graphql" },
+        { "asset": "BUIDL", "source": "On-chain", "method": "ERC4626 convertToAssets() or direct price feed" },
+        { "asset": "USTB",  "source": "On-chain", "method": "Direct price feed" }
+      ],
+      "centrifugeTokenMappings": [
+        { "address": { "value": "0x5a0f93d040de44e78f251b03c43be9cf317dcf64", "format": "evm" }, "tokenId": "0x00010000000000070000000000000001", "asset": "JHLCO" },
+        { "address": { "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86", "format": "evm" }, "tokenId": "0x00010000000000060000000000000001", "asset": "JHST" }
+      ],
+      "prePeriodBuffer":  { "value": 7, "unit": "days" },
+      "postPeriodBuffer": { "value": 1, "unit": "days" }
+    },
+    "stabilityModules": [
+      {
+        "chain": "base",
+        "tokens": [
+          { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
+          { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement" },
+          { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        ]
+      },
+      {
+        "chain": "arbitrum",
+        "tokens": [
+          { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
+          { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement" },
+          { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        ]
+      },
+      {
+        "chain": "optimism",
+        "tokens": [
+          { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
+          { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement" },
+          { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        ]
+      },
+      {
+        "chain": "unichain",
+        "tokens": [
+          { "token": "USDC",  "module": "skyDirectExposure", "treatment": "MAX(0, baseCost - actualYield) reimbursement" },
+          { "token": "USDS",  "module": "psm3Idle",          "treatment": "Idle reimbursement" },
+          { "token": "sUSDS", "module": "psm3Susds",         "treatment": "30bps spread credit" }
+        ]
+      }
+    ],
+    "knownIssues": [
+      {
+        "id": "BUG-1",
+        "description": "The RWA reimbursement calculation does not apply MAX(0, Base Rate Cost - Actual Revenue) as specified. When RWA assets outperform the base rate, the reimbursement goes negative (star charged extra rather than clamped to zero).",
+        "source": "src/lib/debt-pnl/calculations/grove-rwa-exposure.ts:127",
+        "status": "Confirmed. Fix pending."
+      }
+    ]
+  }
+}

@@ -59,7 +59,7 @@
         { "address": { "value": "0x5a0f93d040de44e78f251b03c43be9cf317dcf64", "format": "evm" }, "tokenId": "0x00010000000000070000000000000001", "asset": "JHLCO" },
         { "address": { "value": "0x8c213ee79581ff4984583c6a801e5263418c4b86", "format": "evm" }, "tokenId": "0x00010000000000060000000000000001", "asset": "JHST" }
       ],
-      "prePeriodBuffer":  { "value": 7, "unit": "days" },
+      "prePeriodBuffer":  { "value": 8, "unit": "days" },
       "postPeriodBuffer": { "value": 1, "unit": "days" }
     },
     "stabilityModules": [
